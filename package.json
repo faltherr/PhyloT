@@ -2,9 +2,17 @@
   "name": "phylot",
   "version": "0.1.0",
   "private": true,
+  "main": "server/server.js",
   "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "bootstrap": "^4.1.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.7",
     "react": "^16.6.3",
+    "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.3",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1"
   },
   "scripts": {
@@ -15,6 +23,13 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "nodemonConfig": {
+    "ext": "js,sql",
+    "ignore": [
+      "src/*",
+      "public/*"
+    ]
   },
   "browserslist": [
     ">0.2%",

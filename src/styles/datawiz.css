@@ -1,0 +1,34 @@
+.data-wizard-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.data-upload-option-container{
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+}
+
+.data-option-card{
+    height: 400px;
+    width: 300px;
+    /* background-color: #9B8AD4; */
+    background-image: linear-gradient(white, #9B8AD4);
+    padding: 6px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.data-option-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+}
+
+.card-icon{
+    height: auto; 
+    width: 90%
+}
+
+.card-text-container{
+    padding: 2px 16px;
+}

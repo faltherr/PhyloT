@@ -1,0 +1,19 @@
+
+a{
+    color: #777
+}
+
+.nav-name-logo-container{
+    display: flex;
+    max-height: 100%;
+}
+.nav-name-logo-container .navbar-brand{
+    padding-bottom: 2px !important;
+}
+
+.nav-logo{
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+}
+
