@@ -1,0 +1,23 @@
+.genome-selection-ui-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.taxonomic-grouping-container{
+    background-color: blanchedalmond;
+}
+
+.taxonomic-grouping-container h4{
+    background-color: white;
+    border-radius: 15px;
+    border: 3px solid purple;
+}
+
+.search-box-container{
+    background-color: blue;
+}
+
+.genome-selector-box{
+    border: 1px solid black
+}
