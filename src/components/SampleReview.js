@@ -1,30 +1,31 @@
 import React, {Component} from 'react'
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
+import Modal from 'react-responsive-modal'
 
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 // Demo Data
-const genomes = [
-      {
-        id: 1168290,
-        name: 'Bifidobacterium animalis subsp. lactis B420',
-        abundance: 0.012803158,
-        fastaSeq: 'GCF_000277325.1_ASM27...fna',
-        size: 1938595,
-        reads: 9639,
-        numberGenome: 1
-      },
-      {
-        id: 200450,
-        name: 'Pseudomonas trivalis',
-        abundance: 0.103765933,
-        fastaSeq: 'GCF_000.1_ASM27...fna',
-        size: 6452803,
-        reads: 32264,
-        numberGenome: 2
-      }
-    ]
+// const genomes = [
+//       {
+//         id: 1168290,
+//         name: 'Bifidobacterium animalis subsp. lactis B420',
+//         abundance: 0.012803158,
+//         fastaSeq: 'GCF_000277325.1_ASM27...fna',
+//         size: 1938595,
+//         reads: 9639,
+//         numberGenome: 1
+//       },
+//       {
+//         id: 200450,
+//         name: 'Pseudomonas trivalis',
+//         abundance: 0.103765933,
+//         fastaSeq: 'GCF_000.1_ASM27...fna',
+//         size: 6452803,
+//         reads: 32264,
+//         numberGenome: 2
+//       }
+//     ]
 
 const columns = [{
   dataField: 'id',
@@ -66,6 +67,7 @@ const columns = [{
     constructor(){
         super()
             this.state={
+                openReviewModal: false,
                 totalReads: '',
                 totalGenomes: '',
                 genomes : [
@@ -92,40 +94,49 @@ const columns = [{
     }
 
     componentDidMount = () => {
-        this.totalReads(genomes)
+        this.totals(this.state.genomes)
     }
 
-    componentDidUpdate = (prevProps, prevState) => {
-        console.log('State was updated')
-        if (prevState.totalGenomes !== this.state.totalGenomes || prevState.reads !== this.state.reads){
-            this.totalReads(this.state.genomes)
-        }
-        else {
-            return null
-        }
-    }
+    // componentDidUpdate = (prevProps, prevState) => {
+    //     if ( this.state.genomes !== prevState.genomes){
+    //         this.totals(this.state.genomes)
+    //     }
+    // }
     
-    totalReads = (data) => {
+    totals = (data) => {
         // let readSum = genomes.reduce((a,b) => ({reads: a.reads + b.reads}))
         let readSum = 0
         let genomeSum = 0
-        genomes.forEach(element=>{
-            readSum += element.reads
-            genomeSum += element.numberGenome
+        this.state.genomes.forEach(element=>{
+            readSum += +element.reads
+            genomeSum += +element.numberGenome
         })
-        
+
         this.setState({
             totalReads: readSum,
             totalGenomes: genomeSum
         })
     }
 
-    handleChangeCell = () => {
-        this.totalReads(this.state.genomes)
+    openReviewModal = () => {
+        this.setState({
+            openReviewModal: true
+        })
     }
+
+    closeReviewModal = () => {
+        this.setState({
+            openReviewModal: false
+        })
+    }
+
+    // handleChangeCell = () => {
+    //     this.totals(this.state.genomes)
+    // }
     
     render(){
-        console.log(this.state)
+        console.log(this.state.genomes)
+        // console.log('PROPS', this.props)
         return(
             <div  className='sample-review-page-container'>
                 <h1>Review Your Sample</h1>
@@ -134,13 +145,15 @@ const columns = [{
                     <button className='btn btn-danger'>Reset Sample</button>
                 </div>
 
-                <BootstrapTable keyField='id' data={ this.state.genomes } columns={ columns } cellEdit={ cellEditFactory({ mode: 'click' , blurToSave:true, afterSaveCell:()=>this.totalReads(this.state.genomes)})}   />
-                {/* <BootstrapTable keyField='id' data={ this.state.genomes } columns={ columns } cellEdit={ cellEditFactory({ mode: 'click' , blurToSave:true, afterSaveCell: (oldValue, newValue, row, column) => {this.setState({ genomes: ++this.state.genomes })} })}   /> */}
-                <p>Total Reads: {this.state.totalReads} </p> 
-                <p>Total Genomes: {this.state.totalGenomes}</p>
+                <BootstrapTable keyField='id' data={ this.state.genomes } columns={ columns } cellEdit={ cellEditFactory({ mode: 'click' , blurToSave:true, afterSaveCell:()=>this.totals(this.state.genomes)})}/>
+                    <p>Total Reads: {this.state.totalReads} </p> 
+                    <p>Total Genomes: {this.state.totalGenomes}</p>
                 <button className='btn btn-info'>Explore Sample Distribution</button>
-                <button className='btn btn-success'>Run Simulation (Execute Py Script)</button>
-
+                <button className='btn btn-success' onClick={this.openReviewModal}>Run Simulation (Execute Py Script)</button>
+                <Modal open={this.state.openReviewModal} onClose={this.closeReviewModal}>
+                    <h2>Other Inputs Prior to Analysis</h2>
+                    
+                </Modal>
 
             </div>
         )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 // import {Link} from 'react-router-dom'
-import main_logo from '../images/PhyloTLogo.png'
+import main_logo from '../images/SeqSimLogo.png'
 
 import '../styles/navbar.css'
 
@@ -13,7 +13,7 @@ export default class NavBar extends React.Component {
                     <Navbar.Brand>
                         <div className='nav-name-logo-container'>
                             <img src={main_logo} className='nav-logo' alt='main logo'/>
-                            <a style={{textDecoration:'none', color:'#777'}} href="/">PhyloT</a>
+                            <a style={{textDecoration:'none', color:'#777'}} href="/">SeqSim</a>
                         </div>
                     </Navbar.Brand>
                 </Navbar.Header>
