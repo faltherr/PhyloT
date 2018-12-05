@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router-dom'
 import '../styles/searchGenomes.css'
 
 export default class SearchGenomes extends Component{
@@ -29,7 +30,9 @@ export default class SearchGenomes extends Component{
                 </div>
                     <div className='genome-selection-button-container'>
                         <button>Add to Collection</button>
-                        <button>Review or Edit Sample</button>
+                        <Link to='sample_review' >
+                            <button className='btn btn-info'>Review Sample and Generate Synthetic Data</button>
+                        </Link>
                     </div>
             </div>
         )

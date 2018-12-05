@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import FilteredMultiSelect from 'react-filtered-multiselect'
 import Dropzone from 'react-dropzone'
+import { Link } from 'react-router-dom'
+
 import '../styles/biomInput.css'
 
 export default class BiomSelector extends Component {
@@ -62,7 +64,9 @@ export default class BiomSelector extends Component {
                         })}
                     </div>}
                 </div>
-                <button className='btn btn-info'>Review Sample and Generate Synthetic Data</button>
+                <Link to='sample_review' >
+                    <button className='btn btn-info'>Review Sample and Generate Synthetic Data</button>
+                </Link>
             </div>
         )
     }

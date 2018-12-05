@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Modal from 'react-responsive-modal'
+import {Link} from 'react-router-dom'
 
 import SearchGenomes from './SearchGenomes'
 import phylo_tree from '../images/phylo_tree.png'
@@ -53,6 +54,10 @@ export default class CommunitySelector extends Component{
                             </div>
                     </div>
                 </div>
+                <br/>
+                <Link to='sample_review' >
+                    <button className='btn btn-info'>Review Sample and Generate Synthetic Data</button>
+                </Link>
                 <Modal open={openTreeModal} onClose={this.onCloseTreeModal} >
                     <h2>Tree Modal</h2>
                 </Modal>
