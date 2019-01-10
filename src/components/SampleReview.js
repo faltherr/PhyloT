@@ -2,8 +2,10 @@ import React, {Component} from 'react'
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import Modal from 'react-responsive-modal'
+import {Link} from 'react-router-dom'
 
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import '../styles/sampleReview.css'
 
 // Demo Data
 // const genomes = [
@@ -53,11 +55,19 @@ const columns = [{
 },
 {
     dataField: 'reads',
-    text: 'Simulated Reads'
+    text: 'Number of Reads'
 },
 {
     dataField: 'numberGenome',
     text: 'Number of Genomes'
+},
+{
+    dataField: 'foldCoverage',
+    text: 'Fold Coverage'
+},
+{
+    dataField: 'gcContent',
+    text: 'GC Content'
 }
 ];
 
@@ -68,6 +78,7 @@ const columns = [{
         super()
             this.state={
                 openReviewModal: false,
+                openKronaPlotModal: false,
                 totalReads: '',
                 totalGenomes: '',
                 genomes : [
@@ -130,9 +141,17 @@ const columns = [{
         })
     }
 
-    // handleChangeCell = () => {
-    //     this.totals(this.state.genomes)
-    // }
+    openKronaPlotModal = () => {
+        this.setState({
+            openKronaPlotModal:true
+        })
+    }
+
+   closeKronaPlotModal = () => {
+        this.setState({
+            openKronaPlotModal:false
+        })
+    }
     
     render(){
         console.log(this.state.genomes)
@@ -141,20 +160,41 @@ const columns = [{
             <div  className='sample-review-page-container'>
                 <h1>Review Your Sample</h1>
                 <div className='review-sample-button-container' style={{display:'flex'}}>
-                    <button className='btn btn-success'>Add More Genomes</button>
-                    <button className='btn btn-danger'>Reset Sample</button>
+                    <Link to='/generate/community_selector'> 
+                        <button className='btn btn-success'>Add More Genomes</button>
+                    </Link>
+                    
+                        <button className='btn btn-danger'>Reset Sample</button>
+
                 </div>
 
                 <BootstrapTable keyField='id' data={ this.state.genomes } columns={ columns } cellEdit={ cellEditFactory({ mode: 'click' , blurToSave:true, afterSaveCell:()=>this.totals(this.state.genomes)})}/>
                     <p>Total Reads: {this.state.totalReads} </p> 
                     <p>Total Genomes: {this.state.totalGenomes}</p>
-                <button className='btn btn-info'>Explore Sample Distribution</button>
-                <button className='btn btn-success' onClick={this.openReviewModal}>Run Simulation (Execute Py Script)</button>
-                <Modal open={this.state.openReviewModal} onClose={this.closeReviewModal}>
-                    <h2>Other Inputs Prior to Analysis</h2>
-                    
-                </Modal>
-
+                    <p>Choose a Statistical Distribution:</p>
+                    <select>
+                        <option value="0">Equal Distribution</option>
+                        <option value="1">Uniform Distribution</option>
+                        <option value="2">Normal Distribution</option>
+                        <option value="3">Log Normal Distribution</option>
+                    </select> 
+                <div>
+                    <button className='btn btn-info' onClick={this.openKronaPlotModal}>Explore Sample Distribution</button>
+                        <Modal open={this.state.openKronaPlotModal} onClose={this.closeKronaPlotModal}>
+                                <h2>Krona Plot Placeholder</h2>
+                        </Modal>
+                    <button className='btn btn-success' onClick={this.openReviewModal}>Run Simulation (Execute Py Script)</button>
+                        <Modal open={this.state.openReviewModal} onClose={this.closeReviewModal}>
+                            <h2>Other Inputs Prior to Analysis??</h2>
+                            <p>Sequencing platform:</p>
+                            <p>Relative Abundance: </p>
+                            <p>Add spike-ins: </p>
+                            <div>
+                                <button className='btn btn-success'>Run Simulation</button>
+                                <button className='btn btn-danger' onClick={this.closeReviewModal}>Close</button>    
+                            </div>
+                        </Modal>
+                </div>
             </div>
         )
     }

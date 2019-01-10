@@ -1,3 +1,10 @@
+.biom-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+}
+
 .dropzone-file-uploader{
     /* position: relative;  */
     width: 200px; 
@@ -10,4 +17,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.selection-main-container{
+    width: 90%;
+    display:flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+}
+
+.file-uploader-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 35%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.select-file-contianer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 35%;
+    border: 1px solid black;
+    border-radius: 5px;
 }

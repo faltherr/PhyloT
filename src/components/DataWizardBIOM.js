@@ -42,30 +42,34 @@ export default class BiomSelector extends Component {
         const { selected_file } = this.state
         return (
             <div className='biom-main-container'>
-                <div className='file-uploader-container'>
-                    <h2>Upload a BIOM File</h2>
-                    <Dropzone onDrop={this.handleOnDrop} className='dropzone-file-uploader' accept="image/png" multiple={false} acceptStyle={{ border: '2px solid green' }} rejectStyle={{ border: '2px solid red' }}>
-                        <div className='biom-file-uploader'>
-                            <i className="fas fa-cloud-upload-alt" style={{ fontSize: '48px' }}></i>
-                            <p>Drag & Drop a BIOM file here</p>
-                            <button>Browse files</button>
-                            <br />
-                            <p>Only *.biom files will be accepted</p>
-                        </div>
-                    </Dropzone>
-                </div>
-                <div className='select-file-contianer'>
-                    <h2>Select a BIOM File from the list below</h2>
-                    <FilteredMultiSelect onChange={this.handleChangeFile} options={this.state.biom_files} showFilter={false} />
-                    {selected_file.length === 0 && <p>(nothing selected yet)</p>}
-                    {selected_file.length > 0 && <div>
-                        {selected_file.map((file, index) => {
-                            return <p key={file.value}>Selected BIOM file: {file.text}</p>
-                        })}
-                    </div>}
-                </div>
+                <div className='selection-main-container'>
+                    <div className='file-uploader-container'>
+                        <h2>Upload a BIOM File</h2>
+                        <Dropzone onDrop={this.handleOnDrop} className='dropzone-file-uploader' accept="image/png" multiple={false} acceptStyle={{ border: '2px solid green' }} rejectStyle={{ border: '2px solid red' }}>
+                            <div className='biom-file-uploader'>
+                                <i className="fas fa-cloud-upload-alt" style={{ fontSize: '48px' }}></i>
+                                <p>Drag & Drop a BIOM file here</p>
+                                <button>Browse files</button>
+                                <br />
+                                <p>Only *.biom files will be accepted</p>
+                            </div>
+                        </Dropzone>
+                    </div>
+                    <h2>OR</h2>
+                    <div className='select-file-contianer'>
+                        <h2>Select a BIOM File from the list below</h2>
+                        <FilteredMultiSelect onChange={this.handleChangeFile} options={this.state.biom_files} showFilter={false} />
+                        {selected_file.length === 0 && <p>(nothing selected yet)</p>}
+                        {selected_file.length > 0 && <div>
+                            {selected_file.map((file, index) => {
+                                return <p key={file.value}>Selected BIOM file: {file.text}</p>
+                            })}
+                        </div>}
+                    </div>
+    
+            </div>
                 <Link to='sample_review' >
-                    <button className='btn btn-info'>Review Sample and Generate Synthetic Data</button>
+                    <button className='btn btn-success'>Review Sample and Generate Synthetic Data</button>
                 </Link>
             </div>
         )

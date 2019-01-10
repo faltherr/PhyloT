@@ -25,14 +25,15 @@ export default class SearchGenomes extends Component{
                     <div className='user-input-review-container'>
                         <h4>You selected: (Insert genome here) </h4>
                         <h4>This contains: (Insert number here) genomes</h4>
+                        <button className='btn btn-info'>Add to Collection</button>
                         {/* conditionally render a box that will display if the user has selected one genome that allows them to adjust the number of genomes in sample */}
                     </div>
                 </div>
                     <div className='genome-selection-button-container'>
-                        <button>Add to Collection</button>
                         <Link to='sample_review' >
-                            <button className='btn btn-info'>Review Sample and Generate Synthetic Data</button>
+                            <button className='btn btn-success'>Review Sample and Generate Synthetic Data</button>
                         </Link>
+                        <button className='btn btn-danger' onClick={this.props.onCloseSearchModal}>Close</button>
                     </div>
             </div>
         )

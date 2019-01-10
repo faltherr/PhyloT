@@ -1,0 +1,10 @@
+.review-sample-button-container{
+    display: flex;
+    height: 5vh;
+    justify-content: flex-end;
+    margin: 15px;
+}
+
+.review-sample-button-container button{
+
+}

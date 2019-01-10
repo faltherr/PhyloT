@@ -56,14 +56,14 @@ export default class CommunitySelector extends Component{
                 </div>
                 <br/>
                 <Link to='sample_review' >
-                    <button className='btn btn-info'>Review Sample and Generate Synthetic Data</button>
+                    <button className='btn btn-success'>Review Sample and Generate Synthetic Data</button>
                 </Link>
                 <Modal open={openTreeModal} onClose={this.onCloseTreeModal} >
                     <h2>Tree Modal</h2>
                 </Modal>
 
                 <Modal open={openSearchModal} onClose={this.onCloseSearchModal} >
-                    <SearchGenomes/>
+                    <SearchGenomes onCloseSearchModal={this.onCloseSearchModal}/>
                 </Modal>
             
             </div>
