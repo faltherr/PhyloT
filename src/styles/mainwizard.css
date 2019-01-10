@@ -1,0 +1,32 @@
+.wizard-main-container{
+    width: 100%;
+}
+
+.breadcrumb-container{
+    height: 15%;
+    width: 100%;
+    background-color: grey;
+}
+
+.main-content{
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+.wizard{
+    min-height: 45vh;
+    width: 70vw;
+    background-color: pink;
+    position: relative;
+}
+
+.button-container{
+    position: absolute;
+    bottom: 0;
+    height: 15%;
+    width: 100%;
+    background-color: gray;
+}
+

@@ -1,0 +1,43 @@
+.radio-button-text-container{
+    display: flex;
+}
+
+.platform-options{
+    display: flex;
+    flex-direction: column;
+}
+
+.platform-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.platform-selection-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px 25px 0px 25px;
+}
+
+.platform-selector{
+    width: 40%;
+    padding-right: 50px;
+    border-right:1px solid #e2e2e2
+}
+
+.platform-name{
+    transition: background-color 1.2s ease;
+    border: 4px solid white;
+    border-radius: 6px;
+    margin: 8px;
+    width: 200px;
+}
+
+.platform-name:hover{
+    background-color: blueviolet;
+}
+
+.platform-name h2{
+    color: white;
+    font-weight: bolder;
+}
