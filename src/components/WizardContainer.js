@@ -34,6 +34,14 @@ export default class WizardContainer extends Component{
         })
     }
 
+    displayContent = () => {
+        if (this.state.currentStep === 1){
+            return <PlatformSelector/>
+        } else {
+            return null
+        }
+    }
+
     render(){
         console.log('State of Wizard', this.state.currentStep)
         return(
@@ -48,7 +56,8 @@ export default class WizardContainer extends Component{
                     Progress Tracker here
                     </div>
                     <div className='content-container'>
-                        <PlatformSelector/>
+                        
+                        {this.displayContent()}
                     </div>
                     <div className='button-container'>
                         <button onClick={this.prevStep}>Previous</button>
