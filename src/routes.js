@@ -4,7 +4,7 @@ import {Switch, Route} from 'react-router-dom';
 import Home from './components/Home.js'
 // import DataWizardMain from './components/DataWizardMain.js'
 import WizardContainer from './components/WizardContainer.js'
-import BiomSelector from './components/DataWizardBIOM.js'
+import BiomSelector from './components/BIOMSelector.js'
 import CommunitySelector from './components/DataWizardCommunity.js'
 import Login from './components/Login.js'
 import Register from './components/Register.js'
