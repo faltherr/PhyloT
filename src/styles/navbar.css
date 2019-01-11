@@ -1,6 +1,11 @@
 
 a{
-    color: #777
+    color: #777;
+
+}
+
+.container{
+    padding-top: 56px;
 }
 
 .nav-name-logo-container{
