@@ -1,14 +1,17 @@
-import React from "react";
+import React, {Fragment} from "react";
 import "../styles/platformselector.css";
+import { connect } from 'react-redux'
+import {setInputType} from '../reducers/mainReducer'
 
 const PlatformSelector = props => {
+    console.log('props', props)
   return (
-    <fragment>
+    <Fragment>
     <div className="platform-container">
       <h2>Select a Sequencing Platform</h2>
       <div className="platform-selection-container">
         <div className="platform-selector">
-          <div className="platform-name">
+          <div className="platform-name" id='illumina'>
             <h2>Illumnia</h2>
           </div>
           <div className="platform-name">
@@ -32,23 +35,29 @@ const PlatformSelector = props => {
       </div>
     </div>
     <div className="input-type-container">
-    <h2>Select a Genome Selection Type</h2>
+    <h2>Select a Genome Input Type</h2>
     <div className="input-selection-container">
       <div className="input-selector">
-        <div className="input-name">
-          <h2>BIOM File</h2>
+        <div className="project-name">
+          <h2 onClick={() => props.setInputType('biom')}>BIOM File</h2>
         </div>
-        <div className="input-name">
-          <h2>New Metagenome Project</h2>
+        <div className="project-name">
+          <h2 onClick={() => props.setInputType('newProject')}>New Metagenome Project</h2>
         </div>
-        <div className="input-name">
-          <h2>Existing Metagenome Project</h2>
+        <div className="project-name">
+          <h2 onClick={() => props.setInputType('existingProject')}>Existing Metagenome Project</h2>
         </div>
       </div>
     </div>
   </div>
-  </fragment>
+  </Fragment>
   );
 };
 
-export default PlatformSelector;
+let mapStateToProps = state => {
+    return (
+        state
+    )
+}
+
+export default connect(mapStateToProps, {setInputType}) (PlatformSelector);

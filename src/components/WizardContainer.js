@@ -51,11 +51,11 @@ export default class WizardContainer extends Component{
                 <h1>GENOME SELECTOR</h1>
                 <p>Use the tool to build a synthetic genome community.</p>
             </section>
-            <section className='main-content'>
+            <div className='main-content'>
                 <div className='wizard'>
-                    <div className='breadcrumb-container'>
+                    {/* <div className='breadcrumb-container'>
                     Progress Tracker here
-                    </div>
+                    </div> */}
                     <div className='content-container'>
                         
                         {this.displayContent()}
@@ -65,7 +65,7 @@ export default class WizardContainer extends Component{
                         <button onClick={this.nextStep}>Next</button>
                     </div>
                 </div>
-            </section>
+            </div>
             </div>
         )
     }
