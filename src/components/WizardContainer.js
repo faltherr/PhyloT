@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import '../styles/mainwizard.css'
 import PlatformSelector from './PlatformSelector'
+import GenomeSelectorType from './GenomeSelectorType'
 
 export default class WizardContainer extends Component{
     constructor(){
@@ -37,8 +38,8 @@ export default class WizardContainer extends Component{
     displayContent = () => {
         if (this.state.currentStep === 1){
             return <PlatformSelector/>
-        } else {
-            return null
+        } else if (this.state.currentStep === 2) {
+            return <GenomeSelectorType/>
         }
     }
 

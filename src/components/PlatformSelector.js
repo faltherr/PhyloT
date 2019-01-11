@@ -3,6 +3,7 @@ import "../styles/platformselector.css";
 
 const PlatformSelector = props => {
   return (
+    <fragment>
     <div className="platform-container">
       <h2>Select a Sequencing Platform</h2>
       <div className="platform-selection-container">
@@ -30,6 +31,23 @@ const PlatformSelector = props => {
         </div>
       </div>
     </div>
+    <div className="input-type-container">
+    <h2>Select a Genome Selection Type</h2>
+    <div className="input-selection-container">
+      <div className="input-selector">
+        <div className="input-name">
+          <h2>BIOM File</h2>
+        </div>
+        <div className="input-name">
+          <h2>New Metagenome Project</h2>
+        </div>
+        <div className="input-name">
+          <h2>Existing Metagenome Project</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  </fragment>
   );
 };
 
