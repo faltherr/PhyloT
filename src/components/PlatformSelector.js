@@ -3,20 +3,22 @@ import "../styles/platformselector.css";
 import { connect } from 'react-redux'
 import {setInputType, setInputChecked} from '../reducers/mainReducer'
 import BiomSelector from '../components/BIOMSelector'
+import ExistingProject from '../components/ExistingProject'
 
 const PlatformSelector = props => {
-    
+  
+  // This function shows and hides components based on user selection for input type.
   let displayContent = () => {
         if (props.inputType === 'biom'){
             return <BiomSelector/>
         } else if (props.inputType === 'existingProject') {
-            return <p>Exisiting Project Selector</p>
+            return <ExistingProject/>
         }
     }
 
-    let handleClick = (name) => {
+    // This is a click handler for the input type. Use it to hold the value and for adjusting styles for clicked selections.
+    let handleClickInput = (name) => {
       props.setInputType(name)
-      // props.setInputChecked()
     }
 
     console.log('props', props)
@@ -56,15 +58,14 @@ const PlatformSelector = props => {
     <div className="input-selection-container">
       <div className="input-selector">
 
-        <div className={`project-name${props.inputType === 'biom' ? '-clicked' : ''}`}>
-          <h2 onClick={() => handleClick('biom')}>BIOM File</h2>
+        <div className={`project-name${props.inputType === 'biom' ? '-clicked' : ''}`} onClick={() => handleClickInput('biom')}>
+          <h2 >BIOM File</h2>
         </div>
-        <div className={`project-name${props.inputType === 'newProject' ? '-clicked' : ''}`}>
-          <h2 onClick={() => handleClick('newProject')}>New Metagenome Project</h2>
+        <div className={`project-name${props.inputType === 'newProject' ? '-clicked' : ''}`} onClick={() => handleClickInput('newProject')}>
+          <h2 >New Metagenome Project</h2>
         </div>
-        <div className={`project-name${props.inputType === 'existingProject' ? '-clicked' : ''}`}>
-
-          <h2 onClick={() => handleClick('existingProject')}>Existing Metagenome Project</h2>
+        <div className={`project-name${props.inputType === 'existingProject' ? '-clicked' : ''}`} onClick={() => handleClickInput('existingProject')}>
+          <h2 >Existing Metagenome Project</h2>
         </div>
       </div>
         {displayContent()}

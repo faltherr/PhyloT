@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import '../styles/mainwizard.css'
 import PlatformSelector from './PlatformSelector'
-import GenomeSelectorType from './GenomeSelectorType'
+import GenomeSelectorType from './FunctionalComponentTemplate'
 
 export default class WizardContainer extends Component{
     constructor(){
