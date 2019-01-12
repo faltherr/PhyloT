@@ -65,7 +65,7 @@ class BiomSelector extends Component {
             {
                 this.props.biomFile.length === 0
                 ?
-                <div className="biom-file-uploader">
+                <div className="file-uploader">
                     <i
                     className="fas fa-cloud-upload-alt"
                     style={{ fontSize: "48px" }}
@@ -76,7 +76,7 @@ class BiomSelector extends Component {
                     <p>Only *.biom files will be accepted</p>
                 </div>
                 :
-                <div className="biom-file-uploader">
+                <div className="file-uploader">
                     <i
                     className="fas fa-check-circle"
                     style={{ fontSize: "48px", color: "green" }}

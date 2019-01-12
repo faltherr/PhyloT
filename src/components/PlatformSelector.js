@@ -1,9 +1,12 @@
 import React, {Fragment} from "react";
 import "../styles/platformselector.css";
 import { connect } from 'react-redux'
-import {setInputType, setInputChecked} from '../reducers/mainReducer'
+// import {OverlayTrigger} from 'react-bootstrap'
+import {setInputType, setInputChecked, setReadModel} from '../reducers/mainReducer'
 import BiomSelector from '../components/BIOMSelector'
 import ExistingProject from '../components/ExistingProject'
+import CustomModel from '../components/CustomModel'
+// import TooltipBS from '../components/Tooltip'
 
 const PlatformSelector = props => {
   
@@ -21,6 +24,14 @@ const PlatformSelector = props => {
       props.setInputType(name)
     }
 
+    let handleClickModel = (model) => {
+      props.setReadModel(model)
+    }
+
+    // let getToolTip = (text) => {
+    //   return <TooltipBS text/>
+    // }
+
     console.log('props', props)
     
 
@@ -30,26 +41,35 @@ const PlatformSelector = props => {
       <h2>Select a Sequencing Platform</h2>
       <div className="platform-selection-container">
         <div className="platform-selector">
-          <div className="platform-name" id='illumina'>
+          <div className="platform-name-clicked" id='illumina'>
             <h2>Illumnia</h2>
           </div>
           <div className="platform-name">
-            <h2>Nanopore</h2>
+            {/* <OverlayTrigger placement='right' overlay={getToolTip('Nanopore')}/> */}
+              <h2>Nanopore</h2>
+            {/* <OverlayTrigger/> */}
           </div>
           <div className="platform-name">
             <h2>PacificBio</h2>
           </div>
         </div>
 
-        <div className="platform-options">
-          <div className="radio-button-text-container">
-            <input type="radio" name="model" />
-            <p>Default Metagenome Model</p>
+        <div className="model-selection-container">
+          <div className={`model-name${props.readModel === 'default' ? '-clicked' : ''}`} onClick={() => handleClickModel('default')}>
+            {/* <input type="radio" name="model" /> */}
+            <h2>Default Model</h2>
           </div>
-          <div className="radio-button-text-container">
-            <input type="radio" name="model" />
-            <p>Custom Trained Model</p>
+          <div className={`model-name${props.readModel === 'custom' ? '-clicked' : ''}`} onClick={() => handleClickModel('custom')}>
+            {/* <input type="radio" name="model" /> */}
+            <h2>Upload Custom Model</h2>
           </div>
+          {
+                props.readModel === 'custom'
+                ?
+                <CustomModel/>
+                :
+                null
+              }
         </div>
       </div>
     </div>
@@ -81,4 +101,4 @@ let mapStateToProps = state => {
     )
 }
 
-export default connect(mapStateToProps, {setInputType, setInputChecked}) (PlatformSelector);
+export default connect(mapStateToProps, {setInputType, setInputChecked, setReadModel}) (PlatformSelector);

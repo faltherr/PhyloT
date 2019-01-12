@@ -1,6 +1,6 @@
-.radio-button-text-container{
+/* .radio-button-text-container{
     display: flex;
-}
+} */
 
 .platform-options{
     display: flex;
@@ -33,6 +33,15 @@
     width: 200px;
 }
 
+.platform-name-clicked{
+    /* transition: background-color 1.2s ease; */
+    border: 4px solid white;
+    border-radius: 6px;
+    margin: 8px;
+    width: 200px;
+    background-color: blueviolet;
+}
+
 .platform-name:nth-child(2){
     opacity: 0.3;
 }
@@ -52,6 +61,42 @@
 .platform-name h2{
     color: white;
     font-weight: bolder;
+}
+
+.platform-name-clicked h2{
+    color: white;
+    font-weight: bolder;
+}
+
+.model-name{
+    transition: background-color 1.2s ease;
+    border: 4px solid white;
+    border-radius: 6px;
+    margin: 8px;
+    width: 300px;
+}
+
+.model-name h2{
+    color: white;
+    font-weight: bolder;
+}
+
+.model-name-clicked {
+    /* transition: background-color 1.2s ease; */
+    border: 4px solid white;
+    border-radius: 6px;
+    margin: 8px;
+    width: 300px;
+    background-color: blueviolet;
+}
+
+.model-name-clicked h2{
+    color: white;
+    font-weight: bolder;
+}
+
+#model-file-uploader{
+    width: 100%
 }
 
 .project-name{
@@ -76,6 +121,10 @@
 }
 
 .project-name h2{
+    color: white;
+    font-weight: bold;
+}
+.project-name-clicked h2{
     color: white;
     font-weight: bolder;
 }

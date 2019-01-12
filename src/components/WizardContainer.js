@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import '../styles/mainwizard.css'
 import PlatformSelector from './PlatformSelector'
 import GenomeSelectorType from './FunctionalComponentTemplate'
 
-export default class WizardContainer extends Component{
+class WizardContainer extends Component{
     constructor(){
         super()
         this.state={
@@ -43,6 +44,16 @@ export default class WizardContainer extends Component{
         }
     }
 
+    displayButton = () =>{
+        if(this.props.inputType === 'existingProject' || this.props.inputType === 'biom'){
+            return <button onClick={this.prevStep}>Review Sample</button>
+        } else if (this.props.inputType === 'newProject'){
+            return <button onClick={this.nextStep}>Select Genomes for Sample</button>
+        } else{
+            return null
+        }
+    }
+
     render(){
         console.log('State of Wizard', this.state.currentStep)
         return(
@@ -61,8 +72,7 @@ export default class WizardContainer extends Component{
                         {this.displayContent()}
                     </div>
                     <div className='button-container'>
-                        <button onClick={this.prevStep}>Previous</button>
-                        <button onClick={this.nextStep}>Next</button>
+                        {this.displayButton()}
                     </div>
                 </div>
             </div>
@@ -71,3 +81,10 @@ export default class WizardContainer extends Component{
     }
 }
 
+let mapStateToProps = state => {
+    return(
+        state
+    )
+}
+
+export default connect(mapStateToProps)(WizardContainer)

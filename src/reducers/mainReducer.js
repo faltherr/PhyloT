@@ -3,17 +3,31 @@ const INPUT_TYPE = 'INPUT_TYPE'
 const INPUT_TYPE_CHECKED = 'INPUT_TYPE_CHECKED'
 const EXISTING_PROJECT_FILE = 'EXISTING_PROJECT_FILE'
 const BIOM_FILE = 'BIOM_FILE'
+const READ_MODEL = 'READ_MODEL'
+const CUSTOM_MODEL = 'CUSTOM_MODEL'
 
 const initialState = {
     seqPlatform: 'illumina',
+    customModel: [],
     inputType: '',
     radioInputClassChecked: false,
     existingProjectFile: [],
-    biomFile: []
+    biomFile: [],
+    readModel:'default'
 }
 
 export default function mainReducer (state = initialState, action){
     switch (action.type){
+        case READ_MODEL:
+            return{
+                ...state,
+                readModel: action.payload
+            }
+        case CUSTOM_MODEL:
+            return{
+                ...state,
+                customModel: action.payload
+            }
         case INPUT_TYPE:
         return{
             ...state,
@@ -36,6 +50,24 @@ export default function mainReducer (state = initialState, action){
             }
         default:
             return state
+    }
+}
+
+//Manages state of model selected
+
+export function setReadModel(model){
+    return{
+        type: READ_MODEL,
+        payload: model
+    }
+}
+
+// Manages the model files uploaded
+
+export function setCustomModel(modelFile){
+    return{
+        type: CUSTOM_MODEL,
+        payload: modelFile
     }
 }
 
