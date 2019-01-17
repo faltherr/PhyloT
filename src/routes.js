@@ -10,6 +10,7 @@ import Login from './components/Login.js'
 import Register from './components/Register.js'
 import SampleReview from './components/SampleReview.js'
 import MainResults from './components/MainResults.js'
+import CustomizeContainer from './components/CustomizeContainer.js'
 
 export default (
 <Switch>
@@ -20,6 +21,7 @@ export default (
     <Route path="/generate/biom_selector" component={BiomSelector} />
     <Route path="/generate/community_selector" component={CommunitySelector} />
     <Route path="/generate/sample_review" component={SampleReview} />
+    <Route path="/generate/customize" component={CustomizeContainer} />
     <Route path ="/results" component={MainResults} />
 </Switch> 
 )
