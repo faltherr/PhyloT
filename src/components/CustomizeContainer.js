@@ -61,7 +61,7 @@ class CustomizeContainer extends Component {
             <button type="button" className="btn btn-info" onClick={() => this.openModal('isSearchModalOpen')}>
               Search By Taxonomic Name
             </button>
-                <Modal open={this.state.isSearchModalOpen} onClose={() => this.closeModal('isSearchModalOpen')}>
+                <Modal id='searchModal' open={this.state.isSearchModalOpen} onClose={() => this.closeModal('isSearchModalOpen')}>
                     <SearchGenomes/>
                 </Modal>
 
@@ -73,16 +73,12 @@ class CustomizeContainer extends Component {
                 </Modal>
           </div>
           {/* This div will contain the returned values */}
-          <div>
-            <h4>Taxonomic ID</h4>
-            <h4>Number of Genomes</h4>
-            <button type="button" className="btn btn-success">
-              Add Genomes to Cart
-            </button>
-          </div>
         </div>
         <div style={{ backgroundColor: "yellow" }}>
           Table (cart) Placeholder
+          <button type="button" className="btn btn-success">
+              Add Genomes to Cart
+          </button>
         </div>
         <div style={{ backgroundColor: "pink" }}>
           <button type="button" className="btn btn-success">

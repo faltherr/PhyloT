@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ToastContainer } from 'react-toastify'
 // import logo from './logo.svg';
 import './App.css';
 import routes from './routes';
@@ -10,6 +11,7 @@ class App extends Component {
     return (
       <div className="App">
       <NavBar/>
+      <ToastContainer/>
       {routes}
       <Footer/>
       </div>

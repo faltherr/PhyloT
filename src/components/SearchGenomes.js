@@ -1,13 +1,16 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import '../styles/searchGenomes.css'
 import { searchTableData } from './data/data'
-import { setSearchValues, setSelectedGenome } from '../reducers/mainReducer'
+import { setSearchValues, setSelectedGenome, addToCollection } from '../reducers/mainReducer'
 
 
 let SearchGenomes = props => {
 
+    // Here we dynamically filter the returned values from the search bar
     let handleChange = (event) => {
         let searchValue = event.target.value.toLowerCase()
         let options = searchTableData
@@ -21,11 +24,29 @@ let SearchGenomes = props => {
         props.setSearchValues(options)
     }
 
+    //This will check the sample array and the collection array for the same value and only add the value if it is not present
+    let handleAddToCollection = (genome, arr) => {
+        let found = false;
+        for(let i = 0; i < arr.length; i++){
+            console.log(22222,arr)
+            if(arr[i].TaxID === genome.TaxID )
+            found = true
+            break
+        }
+        if(!found){
+            props.addToCollection(genome)
+            toast.success(`Added ${genome.GenomeName} to collection. Close the window to review.`)
+        } else {
+            // maybe use toast here to alert user that genome is in collection
+            toast.error(`${genome.GenomeName} already in collection!`)
+        }
+    }
 
 
-    console.log('search option array', props.taxIdSearch)
+    // console.log('search option array', props.taxIdSearch)
+    // console.log('Collection', props.collection)
     return(
-        <div>
+        <div className='taxonomy-search-modal'>
             <h2> Search For Genomes </h2>
             <div className='genome-selection-ui-container'>
                 {/* <div className='taxonomic-grouping-container'>
@@ -39,32 +60,31 @@ let SearchGenomes = props => {
                     <h4>Species</h4>
                 </div> */}
                 <div className='search-box-container'>
-                    <input placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)}></input>
+                    <input id='genome-searchbar' placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)} ></input>
                     <div className='genome-selector-box'>
                         {props.taxIdSearch.map(element =>{
                             return <div key ={element.TaxID} onClick={()=>props.setSelectedGenome(element)}>{element.GenomeName}</div>
                         })}
                     </div>
                 </div>
+                    </div>
                     <div className='user-input-review-container'>
                     {
                         props.selectedGenome.GenomeName
                         ?
-                        <div>
-                            <h4>You selected: {props.selectedGenome.GenomeName} </h4>
-                            <h4>This contains: {props.selectedGenome.numberOfGenomes} genomes</h4>
-                            <button className='btn btn-info'>Add to Collection</button>
+                        <div className='search-selection-review'>
+                            <p>You selected: {props.selectedGenome.GenomeName} </p>
+                            <p>This contains: {props.selectedGenome.numberOfGenomes} genomes</p>
+
                             {/* /* conditionally render a box that will display if the user has selected one genome that allows them to adjust the number of genomes in sample */}
                         </div>
                         :
                         null
-                }
-                    </div>
+                    }
+                    
             </div>
                 <div className='genome-selection-button-container'>
-                    <Link to='sample_review' >
-                        <button className='btn btn-success'>Review Sample and Generate Synthetic Data</button>
-                    </Link>
+                    <button disabled={props.selectedGenome.length===0} className='btn btn-info' onClick={()=>handleAddToCollection( props.selectedGenome, props.collection)}>Add to Collection</button>
                     <button className='btn btn-danger' onClick={props.onCloseSearchModal}>Close</button>
                 </div>
         </div>
@@ -80,5 +100,6 @@ let mapStateToProps = state => {
 export default connect(
     mapStateToProps, 
         {setSearchValues, 
-        setSelectedGenome})
+        setSelectedGenome,
+        addToCollection})
     (SearchGenomes)

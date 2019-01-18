@@ -9,6 +9,7 @@ const TAX_ID_SEARCH = 'TAX_ID_SEARCH'
 const SET_SELECTED_GENOME = 'SET_SELECTED_GENOME'
 const ADD_TO_GENOME_SAMPLE = 'GENOME_SAMPLE'
 const RESET_SEARCH = 'RESET_SEARCH'
+const ADD_TO_COLLECTION = 'ADD_TO_COLLECTION'
 
 const initialState = {
     seqPlatform: 'illumina',
@@ -20,6 +21,7 @@ const initialState = {
     readModel:'default',
     taxIdSearch: [],
     selectedGenome: [],
+    collection: [],
     genomeSample: []
 }
 
@@ -64,6 +66,11 @@ export default function mainReducer (state = initialState, action){
             return{
                 ...state,
                 selectedGenome: action.payload
+            }
+        case ADD_TO_COLLECTION:
+            return{
+                ...state,
+                collection: [...state.collection, action.payload]
             }
         case ADD_TO_GENOME_SAMPLE:
             return{
@@ -145,9 +152,18 @@ export function setSelectedGenome(genome){
     }
 }
 
+//This is the sample that will be displayed on the review page
 export function addToGenomeSample(genomes){
     return{
         type: ADD_TO_GENOME_SAMPLE,
+        payload: genomes
+    }
+}
+
+//The collection is a staging area to adjust values prior to adding them to the sample for review
+export function addToCollection(genomes){
+    return{
+        type: ADD_TO_COLLECTION,
         payload: genomes
     }
 }
