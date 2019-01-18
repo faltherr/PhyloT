@@ -1,7 +1,16 @@
+.taxonomy-search-modal{
+    height: 55vh;
+    width: 70vw;
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+    justify-items: center;
+}
+
 .genome-selection-ui-container{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    width: 88%;
 }
 
 .taxonomic-grouping-container{
@@ -14,10 +23,62 @@
     border: 3px solid purple;
 }
 
+
 .search-box-container{
-    background-color: blue;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#genome-searchbar{
+    width: 68%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    transition: 0.5s;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+#genome-searchbar:focus{
+    border: 3px solid #555;
 }
 
 .genome-selector-box{
-    border: 1px solid black
+    border: 1px solid black;
+    min-height: 75%;
+    max-height: 85%;
+    width: 90%;
+    overflow: scroll;
+}
+
+.genome-selector-box>div:hover{
+    cursor: pointer;
+}
+
+.user-input-review-container{
+    width: 88%;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.search-selection-review{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.search-selection-review>p{
+    width: auto;
+}
+
+.genome-selection-button-container{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
 }

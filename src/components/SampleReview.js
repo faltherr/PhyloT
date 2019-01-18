@@ -160,12 +160,12 @@ const columns = [{
             <div  className='sample-review-page-container'>
                 <h1>Review Your Sample</h1>
                 <div className='review-sample-button-container' style={{display:'flex'}}>
-                    <Link to='/generate/community_selector'> 
+                    <Link to='/generate/customize'> 
                         <button className='btn btn-success'>Add More Genomes</button>
                     </Link>
-                    
+                    <Link to ='/generate'>
                         <button className='btn btn-danger'>Reset Sample</button>
-
+                    </Link>
                 </div>
 
                 <BootstrapTable keyField='id' data={ this.state.genomes } columns={ columns } cellEdit={ cellEditFactory({ mode: 'click' , blurToSave:true, afterSaveCell:()=>this.totals(this.state.genomes)})}/>
@@ -190,7 +190,9 @@ const columns = [{
                             <p>Relative Abundance: </p>
                             <p>Add spike-ins: </p>
                             <div>
-                                <button className='btn btn-success'>Run Simulation</button>
+                                <Link to='/results'>
+                                    <button className='btn btn-success'>Run Simulation</button>
+                                </Link>
                                 <button className='btn btn-danger' onClick={this.closeReviewModal}>Close</button>    
                             </div>
                         </Modal>
