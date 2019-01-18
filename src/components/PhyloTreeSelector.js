@@ -48,7 +48,6 @@ componentDidMount() {
             translate={this.state.translate}
             orientation = {'vertical'}
         />
- 
       </div>
     )
   }
