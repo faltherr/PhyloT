@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import { Link } from 'react-router-dom'
+
 import '../styles/mainwizard.css'
 import PlatformSelector from './PlatformSelector'
 import GenomeSelectorType from './FunctionalComponentTemplate'
@@ -46,9 +48,11 @@ class WizardContainer extends Component{
 
     displayButton = () =>{
         if(this.props.inputType === 'existingProject' || this.props.inputType === 'biom'){
-            return <button onClick={this.prevStep}>Review Sample</button>
+            // return <button onClick={this.prevStep}>Review Sample</button>
+            return <Link to = '/generate/review'><button type='button' className='btn btn-success'>Review Sample</button></Link>
         } else if (this.props.inputType === 'newProject'){
-            return <button onClick={this.nextStep}>Select Genomes for Sample</button>
+            // return <button onClick={this.nextStep}>Select Genomes for Sample</button>
+            return <Link to='/generate/customize'> <button type='button' className='btn btn-success'>Select Genomes for Sample</button> </Link>
         } else{
             return null
         }

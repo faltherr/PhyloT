@@ -5,6 +5,10 @@ const EXISTING_PROJECT_FILE = 'EXISTING_PROJECT_FILE'
 const BIOM_FILE = 'BIOM_FILE'
 const READ_MODEL = 'READ_MODEL'
 const CUSTOM_MODEL = 'CUSTOM_MODEL'
+const TAX_ID_SEARCH = 'TAX_ID_SEARCH'
+const SET_SELECTED_GENOME = 'SET_SELECTED_GENOME'
+const ADD_TO_GENOME_SAMPLE = 'GENOME_SAMPLE'
+const RESET_SEARCH = 'RESET_SEARCH'
 
 const initialState = {
     seqPlatform: 'illumina',
@@ -13,7 +17,10 @@ const initialState = {
     radioInputClassChecked: false,
     existingProjectFile: [],
     biomFile: [],
-    readModel:'default'
+    readModel:'default',
+    taxIdSearch: [],
+    selectedGenome: [],
+    genomeSample: []
 }
 
 export default function mainReducer (state = initialState, action){
@@ -47,6 +54,27 @@ export default function mainReducer (state = initialState, action){
             return{
                 ...state,
                 biomFile: action.payload
+            }
+        case TAX_ID_SEARCH:
+            return{
+                ...state,
+                taxIdSearch: action.payload
+            }
+        case SET_SELECTED_GENOME:
+            return{
+                ...state,
+                selectedGenome: action.payload
+            }
+        case ADD_TO_GENOME_SAMPLE:
+            return{
+                ...state,
+                genomeSample: action.payload
+            }
+        case RESET_SEARCH:
+            return{
+                ...state,
+                selectedGenome: initialState.selectedGenome,
+                taxIdSearch: initialState.taxIdSearch
             }
         default:
             return state
@@ -98,5 +126,35 @@ export function setBiomFile(files){
     return{
         type: BIOM_FILE,
         payload: files
+    }
+}
+
+//Update the array of values returned for the search
+export function setSearchValues(arrayOfGenomes){
+    return{
+        type: TAX_ID_SEARCH,
+        payload: arrayOfGenomes
+    }
+}
+
+//The selected genome identifies the taxonomy selected by the user
+export function setSelectedGenome(genome){
+    return{
+        type: SET_SELECTED_GENOME,
+        payload: genome
+    }
+}
+
+export function addToGenomeSample(genomes){
+    return{
+        type: ADD_TO_GENOME_SAMPLE,
+        payload: genomes
+    }
+}
+
+//This action creator will reset the search on modal close or adding to cart
+export function resetSearch(){
+    return{
+        type: RESET_SEARCH
     }
 }

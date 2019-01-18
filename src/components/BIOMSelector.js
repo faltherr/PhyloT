@@ -106,11 +106,11 @@ class BiomSelector extends Component {
             )}
           </div>
         </div>
-        <Link to="sample_review">
+        {/* <Link to="sample_review">
           <button className="btn btn-success">
             Review Sample and Generate Synthetic Data
           </button>
-        </Link>
+        </Link> */}
       </div>
     );
   }

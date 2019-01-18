@@ -4,7 +4,7 @@ export default class Login extends Component{
     render(){
         return(
             <div>
-                <h1>Welcome Back to SeqSim</h1>
+                <h1>Welcome to SeqSim</h1>
                 <h3>Please Login</h3>
                 <p>Username</p> <input></input>
                 <p>Password</p> <input></input>

@@ -20,7 +20,7 @@ export default (
     <Route exact path="/generate" component={WizardContainer} />
     <Route path="/generate/biom_selector" component={BiomSelector} />
     <Route path="/generate/community_selector" component={CommunitySelector} />
-    <Route path="/generate/sample_review" component={SampleReview} />
+    <Route path="/generate/review" component={SampleReview} />
     <Route path="/generate/customize" component={CustomizeContainer} />
     <Route path ="/results" component={MainResults} />
 </Switch> 
