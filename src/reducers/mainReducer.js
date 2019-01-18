@@ -10,6 +10,7 @@ const SET_SELECTED_GENOME = 'SET_SELECTED_GENOME'
 const ADD_TO_GENOME_SAMPLE = 'GENOME_SAMPLE'
 const RESET_SEARCH = 'RESET_SEARCH'
 const ADD_TO_COLLECTION = 'ADD_TO_COLLECTION'
+const UPDATE_COLLECTION_GENOME_NUMBER = 'UPDATE_COLLECTION_GENOME_NUMBER'
 
 const initialState = {
     seqPlatform: 'illumina',
@@ -76,6 +77,19 @@ export default function mainReducer (state = initialState, action){
             return{
                 ...state,
                 genomeSample: action.payload
+            }
+        case UPDATE_COLLECTION_GENOME_NUMBER:
+            return{
+                ...state,
+                collection: state.collection.map(genome =>{
+                    return(
+                        genome.TaxID === action.payload.TaxID
+                        ?
+                        {...genome, GenomeNumer:action.payload.GenomeNumer}
+                        :
+                        genome
+                    )
+                })
             }
         case RESET_SEARCH:
             return{
@@ -172,5 +186,12 @@ export function addToCollection(genomes){
 export function resetSearch(){
     return{
         type: RESET_SEARCH
+    }
+}
+
+export function updateCollection(genomes){
+    return{
+        type: UPDATE_COLLECTION_GENOME_NUMBER,
+        payload: genomes
     }
 }

@@ -85,7 +85,7 @@ let SearchGenomes = props => {
             </div>
                 <div className='genome-selection-button-container'>
                     <button disabled={props.selectedGenome.length===0} className='btn btn-info' onClick={()=>handleAddToCollection( props.selectedGenome, props.collection)}>Add to Collection</button>
-                    <button className='btn btn-danger' onClick={props.onCloseSearchModal}>Close</button>
+                    <button className='btn btn-danger' onClick={()=>props.closeModalFn('isSearchModalOpen')}>Close</button>
                 </div>
         </div>
     )

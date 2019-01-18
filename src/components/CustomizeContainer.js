@@ -5,6 +5,7 @@ import Checkbox from "./Checkbox";
 import Modal from "react-responsive-modal";
 import SearchGenomes from './SearchGenomes'
 import PhyloTreeSelector from './PhyloTreeSelector'
+import CollectionTable from './CollectionTable'
 
 import "../styles/customizercontainer.css";
 
@@ -33,6 +34,7 @@ class CustomizeContainer extends Component {
 
   render() {
       console.log('customizer state', this.state)
+      console.log('PROPS', this.props)
     return (
       <div className="wrapper">
         <div style={{ backgroundColor: "green" }}>
@@ -61,8 +63,8 @@ class CustomizeContainer extends Component {
             <button type="button" className="btn btn-info" onClick={() => this.openModal('isSearchModalOpen')}>
               Search By Taxonomic Name
             </button>
-                <Modal id='searchModal' open={this.state.isSearchModalOpen} onClose={() => this.closeModal('isSearchModalOpen')}>
-                    <SearchGenomes/>
+                <Modal id='searchModal' open={this.state.isSearchModalOpen} onClose={() => this.closeModal('isSearchModalOpen')} >
+                    <SearchGenomes closeModalFn ={this.closeModal}/>
                 </Modal>
 
             <button type="button" className="btn btn-info" onClick={() => this.openModal('isTreeModalOpen')}>
@@ -74,11 +76,8 @@ class CustomizeContainer extends Component {
           </div>
           {/* This div will contain the returned values */}
         </div>
-        <div style={{ backgroundColor: "yellow" }}>
-          Table (cart) Placeholder
-          <button type="button" className="btn btn-success">
-              Add Genomes to Cart
-          </button>
+        <div style={{ backgroundColor: "yellow", maxHeight: "230", overflow:"scroll" }}>
+          <CollectionTable/>
         </div>
         <div style={{ backgroundColor: "pink" }}>
           <button type="button" className="btn btn-success">
