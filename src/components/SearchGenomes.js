@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+// import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -101,5 +101,4 @@ export default connect(
     mapStateToProps, 
         {setSearchValues, 
         setSelectedGenome,
-        addToCollection})
-    (SearchGenomes)
+        addToCollection})(SearchGenomes)

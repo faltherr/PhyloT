@@ -36,7 +36,8 @@ const CollectionTable = props => {
                 Header: "",
                 accessor: "TAXID",
                 // Cell: cell => (<button onClick={(e) => this.handleButtonClick(e, cell)}> X </button>)
-                Cell: <i className="fas fa-times-circle"></i>
+                Cell: <i className="fas fa-times-circle"></i>,
+                // width: 15
             },
             {
               Header: "Superkingdom",
