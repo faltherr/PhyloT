@@ -7,6 +7,8 @@ import SearchGenomes from './SearchGenomes'
 import PhyloTreeSelector from './PhyloTreeSelector'
 import CollectionTable from './CollectionTable'
 
+import { addToGenomeSample } from '../reducers/mainReducer'
+
 import "../styles/customizercontainer.css";
 
 import { superKingdomOptions } from "./data/data";
@@ -96,4 +98,4 @@ let mapStateToProps = state => {
   return state;
 };
 
-export default connect(mapStateToProps)(CustomizeContainer);
+export default connect(mapStateToProps, {addToGenomeSample})(CustomizeContainer);

@@ -4,7 +4,7 @@ import ReactTable from "react-table";
 import "react-table/react-table.css";
 import "../styles/tables.css";
 
-import { updateCollection } from '../reducers/mainReducer'
+import { updateCollection, removeFromCollection } from '../reducers/mainReducer'
 
 const CollectionTable = props => {
 
@@ -34,9 +34,9 @@ const CollectionTable = props => {
         columns= {[
             {
                 Header: "",
-                accessor: "TAXID",
+                accessor: "TaxID",
                 // Cell: cell => (<button onClick={(e) => this.handleButtonClick(e, cell)}> X </button>)
-                Cell: <i className="fas fa-times-circle"></i>,
+                Cell: ({value}) => (<i className="fas fa-times-circle" onClick={()=>props.removeFromCollection({value})}></i>),
                 // width: 15
             },
             {
@@ -74,4 +74,4 @@ let mapStateToProps = state => {
   return state;
 };
 
-export default connect(mapStateToProps, {updateCollection})(CollectionTable);
+export default connect(mapStateToProps, {updateCollection, removeFromCollection})(CollectionTable);

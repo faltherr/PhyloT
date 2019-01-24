@@ -11,6 +11,7 @@ const ADD_TO_GENOME_SAMPLE = 'GENOME_SAMPLE'
 const RESET_SEARCH = 'RESET_SEARCH'
 const ADD_TO_COLLECTION = 'ADD_TO_COLLECTION'
 const UPDATE_COLLECTION_GENOME_NUMBER = 'UPDATE_COLLECTION_GENOME_NUMBER'
+const REMOVE_FROM_COLLECTION = 'REMOVE_FROM_COLLECTION'
 
 const initialState = {
     seqPlatform: 'illumina',
@@ -27,6 +28,7 @@ const initialState = {
 }
 
 export default function mainReducer (state = initialState, action){
+    console.log(action)
     switch (action.type){
         case READ_MODEL:
             return{
@@ -91,6 +93,11 @@ export default function mainReducer (state = initialState, action){
                     )
                 })
             }
+        case REMOVE_FROM_COLLECTION:
+        return {
+            ...state,
+            collection: state.collection.filter(genome => genome.TaxID !== action.payload.value)
+        }
         case RESET_SEARCH:
             return{
                 ...state,
@@ -189,9 +196,17 @@ export function resetSearch(){
     }
 }
 
+//This action will update the number of genomes from a clade
 export function updateCollection(genomes){
     return{
         type: UPDATE_COLLECTION_GENOME_NUMBER,
         payload: genomes
+    }
+}
+
+export function removeFromCollection(taxID){
+    return{
+        type: REMOVE_FROM_COLLECTION,
+        payload: taxID
     }
 }
