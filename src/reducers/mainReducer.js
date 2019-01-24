@@ -78,7 +78,7 @@ export default function mainReducer (state = initialState, action){
         case ADD_TO_GENOME_SAMPLE:
             return{
                 ...state,
-                genomeSample: action.payload
+                genomeSample: {...state.genomeSample, ...state.collection}
             }
         case UPDATE_COLLECTION_GENOME_NUMBER:
             return{

@@ -3,11 +3,14 @@ import FilteredMultiSelect from "react-filtered-multiselect";
 import Dropzone from "react-dropzone";
 import { connect } from 'react-redux'
 
-// import { Link } from "react-router-dom";
-import {setBiomFile} from '../reducers/mainReducer' 
+//Local components
+import {setBiomFile} from '../../reducers/mainReducer'
 
-import "../styles/biomInput.css";
+//Styles
+import "../../styles/biomInput.css";
 
+
+//This component allows the user to upload a BIOM file or select from several hosted options
 class BiomSelector extends Component {
   constructor() {
     super();
@@ -108,14 +111,6 @@ class BiomSelector extends Component {
             )}
           </div>
         </div>
-        {/* <Link to="sample_review">
-          <button className="btn btn-success">
-            Review Sample and Generate Synthetic Data
-          </button>
-        </Link> */}
-      {/* </div> */}
-
-
       </div>
     );
   }

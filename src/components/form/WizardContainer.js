@@ -2,10 +2,15 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import '../styles/mainwizard.css'
+//Local Components
 import PlatformSelector from './PlatformSelector'
-import GenomeSelectorType from './FunctionalComponentTemplate'
+import GenomeSelectorType from '../utilities/FunctionalComponentTemplate'
 
+//Styles
+import '../../styles/mainwizard.css'
+
+
+//This component holds the functionality of the main form page. It may be converted to a wizard like feature in the future.
 class WizardContainer extends Component{
     constructor(){
         super()

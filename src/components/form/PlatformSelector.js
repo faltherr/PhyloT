@@ -1,16 +1,16 @@
 import React, { Fragment } from "react";
-import "../styles/platformselector.css";
+import "../../styles/platformselector.css";
 import { connect } from "react-redux";
 // import {OverlayTrigger} from 'react-bootstrap'
 import {
   setInputType,
   setInputChecked,
   setReadModel
-} from "../reducers/mainReducer";
-import BiomSelector from "../components/BIOMSelector";
-import ExistingProject from "../components/ExistingProject";
+} from "../../reducers/mainReducer";
+import BiomSelector from "./BIOMSelector";
+import ExistingProject from "./ExistingProject";
 import { CSSTransitionGroup } from 'react-transition-group'
-import CustomModel from "../components/CustomModel";
+import CustomModel from "./CustomModel";
 import {OverlayTrigger, Tooltip} from 'react-bootstrap'
 
 // This function is the container component for the platform selector part of the form

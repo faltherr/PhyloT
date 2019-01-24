@@ -130,61 +130,7 @@
 }
 
 
-/* .slide-container-enter{
-    opacity: 0.01;
-    transform: scale(0.9) translateY(50%);
-}
-
-.slide-container-enter-active{
-    opacity: 1;
-    transform: scale(1) translateY(0%);
-    transition: all 300ms ease-out;
-}
-
-.slide-container-exit{
-    opacity: 1;
-    transform: scale(1) translateY(0%);
-}
-
-.slide-container-exit-active{
-    opacity: 0.01;
-    transform: scale(0.9) translateY(50%);
-    transition: all 300ms ease-out;
-} */
-
-/* .example-enter {
-    opacity: 0.01;
-  }
-  
-  .example-enter.example-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-  }
-  
-  .example-leave {
-    opacity: 1;
-  }
-  
-  .example-leave.example-leave-active {
-    opacity: 0.01;
-    transition: opacity 300ms ease-in;
-  } */
-
-
-/* #biom-selector{
-    width: 220px;
-    transform: translateX(-220px);
-    transition: transform 400ms ease-in;
-}
-
-#biom-selector.project-name-clicked{
-    transform: translateX(0);
-} */
-
-
-#prev-proj-selector.project-name-clicked{
-    
-}
+/* The animation styling is managed with these CSS rules */
 
 .type-fade-enter {
     opacity: 0.01;

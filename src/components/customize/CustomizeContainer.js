@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import SingleSelect from "./SingleSelect";
-import Checkbox from "./Checkbox";
+import SingleSelect from "../utilities/SingleSelect";
+import Checkbox from "../utilities/Checkbox";
 import Modal from "react-responsive-modal";
 import SearchGenomes from './SearchGenomes'
 import PhyloTreeSelector from './PhyloTreeSelector'
 import CollectionTable from './CollectionTable'
+import { Link } from 'react-router-dom'
 
-import { addToGenomeSample } from '../reducers/mainReducer'
+import { addToGenomeSample } from '../../reducers/mainReducer'
 
-import "../styles/customizercontainer.css";
+import "../../styles/customizercontainer.css";
 
-import { superKingdomOptions } from "./data/data";
+import { superKingdomOptions } from "../data/data";
 
 class CustomizeContainer extends Component {
   constructor() {
@@ -82,12 +83,14 @@ class CustomizeContainer extends Component {
           <CollectionTable/>
         </div>
         <div style={{ backgroundColor: "pink" }}>
-          <button type="button" className="btn btn-success">
+          <button type="button" className="btn btn-success" onClick={this.props.addToGenomeSample}>
             Add Selected Genome(s) to Sample
           </button>
-          <button type="button" className="btn btn-info">
-            Review Sample
-          </button>
+          <Link to = '/generate/review'>
+            <button type="button" className="btn btn-info">
+              Review Sample
+            </button>
+          </Link>
         </div>
       </div>
     );

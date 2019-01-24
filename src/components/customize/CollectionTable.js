@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import "../styles/tables.css";
+import "../../styles/tables.css";
 
-import { updateCollection, removeFromCollection } from '../reducers/mainReducer'
+import { updateCollection, removeFromCollection } from '../../reducers/mainReducer'
 
 const CollectionTable = props => {
 

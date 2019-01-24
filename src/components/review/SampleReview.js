@@ -5,30 +5,9 @@ import Modal from 'react-responsive-modal'
 import {Link} from 'react-router-dom'
 
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import '../styles/sampleReview.css'
+import '../../styles/sampleReview.css'
 
-// Demo Data
-// const genomes = [
-//       {
-//         id: 1168290,
-//         name: 'Bifidobacterium animalis subsp. lactis B420',
-//         abundance: 0.012803158,
-//         fastaSeq: 'GCF_000277325.1_ASM27...fna',
-//         size: 1938595,
-//         reads: 9639,
-//         numberGenome: 1
-//       },
-//       {
-//         id: 200450,
-//         name: 'Pseudomonas trivalis',
-//         abundance: 0.103765933,
-//         fastaSeq: 'GCF_000.1_ASM27...fna',
-//         size: 6452803,
-//         reads: 32264,
-//         numberGenome: 2
-//       }
-//     ]
-
+//This defines the column names in BootstrapTable
 const columns = [{
   dataField: 'id',
   text: 'Taxonomic ID',
