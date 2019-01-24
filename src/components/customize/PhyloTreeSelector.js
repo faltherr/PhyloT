@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Tree from 'react-d3-tree';
  
 const myTreeData = [

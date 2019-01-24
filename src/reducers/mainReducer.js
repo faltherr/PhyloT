@@ -10,6 +10,8 @@ const SET_SELECTED_GENOME = 'SET_SELECTED_GENOME'
 const ADD_TO_GENOME_SAMPLE = 'GENOME_SAMPLE'
 const RESET_SEARCH = 'RESET_SEARCH'
 const ADD_TO_COLLECTION = 'ADD_TO_COLLECTION'
+const UPDATE_COLLECTION_GENOME_NUMBER = 'UPDATE_COLLECTION_GENOME_NUMBER'
+const REMOVE_FROM_COLLECTION = 'REMOVE_FROM_COLLECTION'
 
 const initialState = {
     seqPlatform: 'illumina',
@@ -26,6 +28,7 @@ const initialState = {
 }
 
 export default function mainReducer (state = initialState, action){
+    console.log(action)
     switch (action.type){
         case READ_MODEL:
             return{
@@ -75,8 +78,26 @@ export default function mainReducer (state = initialState, action){
         case ADD_TO_GENOME_SAMPLE:
             return{
                 ...state,
-                genomeSample: action.payload
+                genomeSample: {...state.genomeSample, ...state.collection}
             }
+        case UPDATE_COLLECTION_GENOME_NUMBER:
+            return{
+                ...state,
+                collection: state.collection.map(genome =>{
+                    return(
+                        genome.TaxID === action.payload.TaxID
+                        ?
+                        {...genome, GenomeNumer:action.payload.GenomeNumer}
+                        :
+                        genome
+                    )
+                })
+            }
+        case REMOVE_FROM_COLLECTION:
+        return {
+            ...state,
+            collection: state.collection.filter(genome => genome.TaxID !== action.payload.value)
+        }
         case RESET_SEARCH:
             return{
                 ...state,
@@ -172,5 +193,20 @@ export function addToCollection(genomes){
 export function resetSearch(){
     return{
         type: RESET_SEARCH
+    }
+}
+
+//This action will update the number of genomes from a clade
+export function updateCollection(genomes){
+    return{
+        type: UPDATE_COLLECTION_GENOME_NUMBER,
+        payload: genomes
+    }
+}
+
+export function removeFromCollection(taxID){
+    return{
+        type: REMOVE_FROM_COLLECTION,
+        payload: taxID
     }
 }

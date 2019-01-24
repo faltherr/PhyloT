@@ -128,3 +128,24 @@
     color: white;
     font-weight: bolder;
 }
+
+
+/* The animation styling is managed with these CSS rules */
+
+.type-fade-enter {
+    opacity: 0.01;
+  }
+  
+  .type-fade-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+  
+  .type-fade-leave {
+    opacity: 1;
+  }
+  
+  .type-fade-leave.type-fade-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+  }

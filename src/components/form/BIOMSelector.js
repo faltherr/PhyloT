@@ -3,11 +3,14 @@ import FilteredMultiSelect from "react-filtered-multiselect";
 import Dropzone from "react-dropzone";
 import { connect } from 'react-redux'
 
-import { Link } from "react-router-dom";
-import {setBiomFile} from '../reducers/mainReducer' 
+//Local components
+import {setBiomFile} from '../../reducers/mainReducer'
 
-import "../styles/biomInput.css";
+//Styles
+import "../../styles/biomInput.css";
 
+
+//This component allows the user to upload a BIOM file or select from several hosted options
 class BiomSelector extends Component {
   constructor() {
     super();
@@ -48,9 +51,11 @@ class BiomSelector extends Component {
   render() {
     console.log("THis is the selected File", this.state.selected_file);
     console.log('3286732863862', this.props.biomFile.length)
+    console.log('Input Type', this.props.inputType)
     const { selected_file } = this.state;
     return (
-      <div className="biom-main-container">
+      <div id='biom-main-container' className={this.props.inputType==='biom'?'slideOut':'slideIn'}>
+
         <div className="selection-main-container">
           <div className="file-uploader-container">
             <h2>Upload a BIOM File</h2>
@@ -70,7 +75,7 @@ class BiomSelector extends Component {
                     className="fas fa-cloud-upload-alt"
                     style={{ fontSize: "48px" }}
                     />
-                    <p>Drag & Drop a BIOM file here</p>
+                    <p>Drag and Drop a BIOM file here</p>
                     <button>Browse files</button>
                     <br />
                     <p>Only *.biom files will be accepted</p>
@@ -106,11 +111,6 @@ class BiomSelector extends Component {
             )}
           </div>
         </div>
-        {/* <Link to="sample_review">
-          <button className="btn btn-success">
-            Review Sample and Generate Synthetic Data
-          </button>
-        </Link> */}
       </div>
     );
   }

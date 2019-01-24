@@ -1,15 +1,20 @@
-import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+// import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import '../styles/searchGenomes.css'
-import { searchTableData } from './data/data'
-import { setSearchValues, setSelectedGenome, addToCollection } from '../reducers/mainReducer'
 
+//Placeholder data
+import { searchTableData } from '../data/data'
 
+//Reducer action creators
+import { setSearchValues, setSelectedGenome, addToCollection } from '../../reducers/mainReducer'
+
+//Stlyes
+import '../../styles/searchGenomes.css'
+
+//This functional component handles the searchbar functionality
 let SearchGenomes = props => {
-
     // Here we dynamically filter the returned values from the search bar
     let handleChange = (event) => {
         let searchValue = event.target.value.toLowerCase()
@@ -37,28 +42,14 @@ let SearchGenomes = props => {
             props.addToCollection(genome)
             toast.success(`Added ${genome.GenomeName} to collection. Close the window to review.`)
         } else {
-            // maybe use toast here to alert user that genome is in collection
+            // Use toast here to alert user that genome is in collection
             toast.error(`${genome.GenomeName} already in collection!`)
         }
     }
-
-
-    // console.log('search option array', props.taxIdSearch)
-    // console.log('Collection', props.collection)
     return(
         <div className='taxonomy-search-modal'>
             <h2> Search For Genomes </h2>
             <div className='genome-selection-ui-container'>
-                {/* <div className='taxonomic-grouping-container'>
-                    <h3>Filter By:</h3>
-                    <h4>Kingdom</h4>
-                    <h4>Phylum</h4>
-                    <h4>Class</h4>
-                    <h4>Order</h4>
-                    <h4>Family</h4>
-                    <h4>Genus</h4>
-                    <h4>Species</h4>
-                </div> */}
                 <div className='search-box-container'>
                     <input id='genome-searchbar' placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)} ></input>
                     <div className='genome-selector-box'>
@@ -85,7 +76,7 @@ let SearchGenomes = props => {
             </div>
                 <div className='genome-selection-button-container'>
                     <button disabled={props.selectedGenome.length===0} className='btn btn-info' onClick={()=>handleAddToCollection( props.selectedGenome, props.collection)}>Add to Collection</button>
-                    <button className='btn btn-danger' onClick={props.onCloseSearchModal}>Close</button>
+                    <button className='btn btn-danger' onClick={()=>props.closeModalFn('isSearchModalOpen')}>Close</button>
                 </div>
         </div>
     )
@@ -101,5 +92,4 @@ export default connect(
     mapStateToProps, 
         {setSearchValues, 
         setSelectedGenome,
-        addToCollection})
-    (SearchGenomes)
+        addToCollection})(SearchGenomes)

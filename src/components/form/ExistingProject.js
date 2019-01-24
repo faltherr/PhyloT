@@ -2,9 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import Dropzone from 'react-dropzone'
 
-import { setExistingProjectFile } from "../reducers/mainReducer";
-import "../styles/biomInput.css";
+import { setExistingProjectFile } from "../../reducers/mainReducer";
+import "../../styles/biomInput.css";
 
+// This component allows the user to upload a file previously generated from SeqSim
 const ExistingProject = props => {
   let handleOnDrop = (files, rejectedFiles) => {
     console.log("These are the files uploading", files);
