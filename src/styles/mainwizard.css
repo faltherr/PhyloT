@@ -1,5 +1,16 @@
 .wizard-main-container{
     width: 100%;
+    padding-top: 50px;
+    padding-bottom: 30px; 
+    background: #d3365c;
+    background: -moz-linear-gradient(left, #d3365c 0%, #b02660 46%, #b02660 46%, #821265 84%);
+    background: -webkit-linear-gradient(left, #d3365c 0%,#b02660 46%,#b02660 46%,#821265 84%);
+    background: linear-gradient(to right, #d3365c 0%,#b02660 46%,#b02660 46%,#821265 84%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3365c', endColorstr='#821265',GradientType=1 );
+}
+
+.top-text > h1:nth-child(1){
+    margin-top: 0;
 }
 
 .breadcrumb-container{
@@ -17,7 +28,7 @@
 .wizard{
     /* min-height: 65vh; */
     width: 70vw;
-    background-color: pink;
+    background-color: transparent;
 }
 
 .button-container{

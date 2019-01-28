@@ -7,15 +7,24 @@ export default class Home extends Component {
     render() {
         return (
             <div className='homepage-main-container'>
-                <h1>Build a Custom Genome</h1>
+            <div className='home-section-1'>
+                <div className='jump-to-start'>
+                    <div className='jump-to-start-description'>
+                        <h1>CREATE</h1>
+                        <h3>Design and customize a synthetic genome</h3>
+                    </div>
+                    <Link to={'/generate'} style={{ textDecoration: 'none', color:'white' }}>
+                        <div className='home-start-button'> Get Started  </div>
+                    </Link>
+                </div>
+            </div>
+            <div className='home-section-2'>
+                <h3> Advanced Bioinformatics Solutions </h3>
                 <div className='seqsim-description'>
                     <h4>SeqSim generates phylogenetic trees based on the NCBI taxonomy from a list of taxonomic names,  identifiers of protein accessions, SeqSim generates a pruned tree in the selected output format. Complete clades can be included, with interruption at desired taxonomic levels and with optional filtering of unwanted nodes.</h4>
                 </div>
-                <Link to={'/generate'} style={{ textDecoration: 'none', color:'white' }}>
-                <Button bsStyle="primary"> Generate a Custom Genome  </Button>
-                </Link>
-                <h4>Learn More</h4>
-                <h4> &#x2193; </h4>
+                {/* <h4>Optimized interface. Performant Results.</h4> */}
+                {/* <h4> &#x2193; </h4> */}
                 <div className='seqsim-overview-container'>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean finibus massa quis sapien luctus tristique. Sed ac enim felis. Phasellus mattis, quam a luctus bibendum, nulla odio euismod felis, non dictum eros ex in ipsum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla euismod eleifend nisi, eget ullamcorper dui sodales eget. Proin sagittis felis purus, quis lacinia augue sagittis non. Ut mollis sapien felis, non sollicitudin risus ultrices id. Praesent fringilla justo est, vel lacinia diam convallis ut. Donec placerat eget ligula eget commodo. Etiam ut fringilla magna. Phasellus eros neque, accumsan eget velit tincidunt, pulvinar interdum velit. Etiam tristique odio ut quam eleifend, nec aliquet sem porttitor. Vivamus sit amet vulputate orci, a tempus nunc. Nunc mi ante, aliquam vel dignissim a, euismod vel tellus.
 
@@ -28,6 +37,7 @@ export default class Home extends Component {
                         Vivamus in ullamcorper nisi, et mollis sapien. Duis et odio id turpis iaculis posuere. Vivamus maximus sapien non tortor pharetra tincidunt. Nunc aliquam turpis turpis, ac tempor mi ultrices in. Ut lacus nunc, dapibus et odio nec, interdum posuere lacus. Nulla facilisi. Cras tincidunt eros sed metus malesuada mattis. Donec at ex ut sem porta cursus eget nec sem.
                     </p>
                 </div>
+            </div>
             </div>
         )
     }
