@@ -1,11 +1,30 @@
 
-a{
+/* a{
     color: #777;
 
+} */
+
+.navbar{
+    background: #d3365c;
+    background: -moz-linear-gradient(left, #d3365c 0%, #b02660 46%, #b02660 46%, #821265 84%);
+    background: -webkit-linear-gradient(left, #d3365c 0%,#b02660 46%,#b02660 46%,#821265 84%);
+    background: linear-gradient(to right, #d3365c 0%,#b02660 46%,#b02660 46%,#821265 84%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3365c', endColorstr='#821265',GradientType=1 );
+    border: none
 }
 
 .container{
     padding-top: 56px;
+    position: relative;
+}
+
+
+.container{
+    padding-top: 34px;
+    /* display: flex; */
+    /* width:100%; */
+    /* justify-content: space-between; */
+    /* align-items: flex-end; */
 }
 
 .nav-name-logo-container{
@@ -16,9 +35,50 @@ a{
     padding-bottom: 2px !important;
 }
 
+.nav.navbar-nav.navbar-right{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.nav-name-logo-container{
+    height: 70px;
+}
+
 .nav-logo{
     max-height: 100%;
     width: auto;
     max-width: 100%;
 }
 
+nav.navbar.navbar-default{
+    margin-bottom:0;
+}
+
+a{
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400; 
+}
+
+#seqsim-title{
+    font-size: 22px;
+    font-weight: 600;
+    font: 34px 'Arial Narrow', sans-serif;
+    color: #fefefe;
+    /* text-transform: uppercase; */
+    letter-spacing: -1px;
+}
+
+#first-logo-letters{
+    /* color: lightskyblue; */
+    font-weight: 600;
+}
+
+.navbar-default .navbar-nav > li > a{
+    color:white ;
+    font-size: 18px;
+}

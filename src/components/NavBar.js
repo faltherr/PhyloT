@@ -13,7 +13,7 @@ export default class NavBar extends React.Component {
                     <Navbar.Brand>
                         <div className='nav-name-logo-container'>
                             <img src={main_logo} className='nav-logo' alt='main logo'/>
-                            <a style={{textDecoration:'none', color:'#777'}} href="/">SeqSim</a>
+                            <a id='seqsim-title' style={{textDecoration:'none'}} href="/"><span id='first-logo-letters'>seq</span>SIM</a>
                         </div>
                     </Navbar.Brand>
                 </Navbar.Header>
