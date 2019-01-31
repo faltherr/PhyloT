@@ -10,8 +10,13 @@
     background: -webkit-linear-gradient(left, #d3365c 0%,#b02660 46%,#b02660 46%,#821265 84%);
     background: linear-gradient(to right, #d3365c 0%,#b02660 46%,#b02660 46%,#821265 84%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3365c', endColorstr='#821265',GradientType=1 );
-    border: none
+    border: none;
+    border-radius: 0;
 }
+
+.navbar.navbar-default {
+    border-bottom: 0;
+  }
 
 .container{
     padding-top: 56px;
