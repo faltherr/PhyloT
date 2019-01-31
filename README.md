@@ -1,4 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Application Overview
+
+SeqSim, also known as PhyloT, is a program for generating synthetic genomic data from known genomes. Many analysis platforms suffer from high dimensionality challenges that limit performance. Introducing small amounts of noise in samples helps to preserve a sample's defining characteristics. Synthetic data increases the size of data sets and can help in performance and generalization.
+
+The client interface allows users to create fully customizable data from over 10,000 available genomes and review the sample with data visualizations  prior to analysis. Following analysis the generated data can be viewed in the GUI and exported for use in the users informatics algorithms.
+
+## Getting Started: Downloading and running the code
+*This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).*
+
+__Quick Summary__
+
+1. Install node (Which contains npm)
+2. Run `npm install` from the project directory to install dependencies
+3. Run `npm start` to run the application’s “start” script
+4. Run `nodemon` to execute the server file
+
+
+__Detailed Summary__
+
+To begin, clone this repository to a directory on your local machine.
+
+To get React up and running you need to have Node.js and a package manager installed. For this application we recommend using npm as a package manage. Npm downloads, installs, and tracks JavaScript software and npm is automatically installed when you install Node.js. Node.js is an environment for developing server-side applications.
+
+To install Node.js, go to the homepage at https://nodejs.org/en/ and click on the download link suitable for your development needs. We recommend the long term support version unless your projects depend on a higher version of Node.js.
+
+Write `npm install` from the project directory to install all of the project dependencies which are contained in the package.json file. It is best practice to add the node module to your git.ignore file to maintain a light weight upload to your version control system and utilize npm to install the dependencies to your machine locally.
+
+Now run `npm start` to run the application’s start script referenced in the package.json scripts object. This command will start a local server and give you the ability to see changes in the application automatically without have to restart the server after each change.
+
+Finally, to run the server locally we use Nodemon. Nodemon is a tool that aids in the development of node.js applications. It detects changes to the directory and restarts the application automatically. To run nodemon write `nodemon` from the project root or specify the path to the server.js file with `nodemon ./server/server.js`.
+
+At this point you should have a local instance of the React front end and the Node back end that will update in response to file changes. It is important to note that both the server and the client may need to be restarted manually from time to time to ensure that the code changes are taking effect.
+
+
+
 
 ## Available Scripts
 
@@ -42,3 +76,27 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
