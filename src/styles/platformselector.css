@@ -39,7 +39,7 @@
     border-radius: 6px;
     margin: 8px;
     width: 200px;
-    background-color: blueviolet;
+    background-color: rgba(255,255,255,0.45);
 }
 
 .platform-name:nth-child(2){
@@ -51,11 +51,11 @@
 }
 
 #illumina:hover{
-    background-color: blueviolet;
+    background-color: rgba(255,255,255,0.45);
 }
 
 #illumina-clicked{
-    background-color: blueviolet;
+    background-color: rgba(255,255,255,0.45);
 }
 
 .platform-name h2{
@@ -74,6 +74,11 @@
     border-radius: 6px;
     margin: 8px;
     width: 300px;
+    cursor: pointer;
+}
+
+.model-name:hover{
+    background-color: rgba(255,255,255,0.45);
 }
 
 .model-name h2{
@@ -87,7 +92,7 @@
     border-radius: 6px;
     margin: 8px;
     width: 300px;
-    background-color: blueviolet;
+    background-color: rgba(255,255,255,0.45);
 }
 
 .model-name-clicked h2{
@@ -105,10 +110,11 @@
     border-radius: 6px;
     margin: 8px;
     width: 450px;
+    cursor: pointer;
 }
 
 .project-name:hover{
-    background-color: blueviolet;
+    background-color: rgba(255,255,255,0.45);
 }
 
 .project-name-clicked{
@@ -117,7 +123,7 @@
     border-radius: 6px;
     margin: 8px;
     width: 450px;
-    background-color: blueviolet;
+    background-color: rgba(255,255,255,0.45);
 }
 
 .project-name h2{
