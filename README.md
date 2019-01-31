@@ -1,4 +1,4 @@
-## ![alt text](https://github.com/faltherr/PhyloT/blob/master/src/images/small_phylotlogo.png "SeqSim Logo") PhyloT 
+## ![alt text](https://github.com/faltherr/PhyloT/blob/master/src/images/small_phylotlogo.png "SeqSim Logo") SeqSim
 
 
 ## Application Overview
