@@ -21,6 +21,7 @@ let SearchGenomes = props => {
         let searchValue = event.target.value.toLowerCase()
         let options = ref_genomes
         options = options.filter(item => {
+            console.log(item.organism_name)
             return(
                 item.organism_name.toLowerCase().search(searchValue) !== -1
                 ||
@@ -35,16 +36,16 @@ let SearchGenomes = props => {
         let found = false;
         for(let i = 0; i < arr.length; i++){
             console.log(22222,arr)
-            if(arr[i].TaxID === genome.TaxID )
+            if(arr[i].gbrs_paired_asm === genome.gbrs_paired_asm )
             found = true
             break
         }
         if(!found){
             props.addToCollection(genome)
-            toast.success(`Added ${genome.GenomeName} to collection. Close the window to review.`)
+            toast.success(`Added ${genome.organism_name} to collection. Close the window to review.`)
         } else {
             // Use toast here to alert user that genome is in collection
-            toast.error(`${genome.GenomeName} already in collection!`)
+            toast.error(`${genome.organism_name} already in collection!`)
         }
     }
     return(
@@ -55,17 +56,17 @@ let SearchGenomes = props => {
                     <input id='genome-searchbar' placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)} ></input>
                     <div className='genome-selector-box'>
                         {props.taxIdSearch.map(element =>{
-                            return <div key ={element.TaxID} onClick={()=>props.setSelectedGenome(element)}>{element.GenomeName}</div>
+                            return <div key ={`${element.gbrs_paired_asm}`} onClick={()=>props.setSelectedGenome(element)}>{element.organism_name}</div>
                         })}
                     </div>
                 </div>
                     </div>
                     <div className='user-input-review-container'>
                     {
-                        props.selectedGenome.GenomeName
+                        props.selectedGenome.organism_name
                         ?
                         <div className='search-selection-review'>
-                            <p>You selected: {props.selectedGenome.GenomeName} </p>
+                            <p>You selected: {props.selectedGenome.organism_name} </p>
                             <p>This contains: {props.selectedGenome.numberOfGenomes} genomes</p>
 
                             {/* /* conditionally render a box that will display if the user has selected one genome that allows them to adjust the number of genomes in sample */}

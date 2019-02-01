@@ -34,31 +34,33 @@ const CollectionTable = props => {
         columns= {[
             {
                 Header: "",
-                accessor: "TaxID",
+                accessor: "gbrs_paired_asm",
                 // Cell: cell => (<button onClick={(e) => this.handleButtonClick(e, cell)}> X </button>)
                 Cell: ({value}) => (<i className="fas fa-times-circle" onClick={()=>props.removeFromCollection({value})}></i>),
                 // width: 15
             },
             {
               Header: "Superkingdom",
-              accessor: "superKingdom" // String-based value accessors!
+              accessor: "superkingdom" // String-based value accessors!
             },
+            //Unknown value! Currently a place holder
             {
               Header: "Taxonomic Rank",
-              accessor: "rank"
+              accessor: "taxid"
               //   Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
             },
             {
               Header: "Taxonomic ID",
-              accessor: "TaxID"
+              accessor: "species_taxid"
             },
             {
               Header: "Genome Name",
-              accessor: "GenomeName"
+              accessor: "organism_name"
             },
+            //Unknown value! Currently a place holder
             {
               Header: "Number of Genomes",
-              accessor: "numberOfGenomes",
+              accessor: "isolate",
               Cell: renderEditable
             }
           ]}

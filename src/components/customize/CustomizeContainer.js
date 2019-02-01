@@ -40,12 +40,12 @@ class CustomizeContainer extends Component {
       console.log('PROPS', this.props)
     return (
       <div className="wrapper">
-        <div style={{ backgroundColor: "green" }}>
+        <div>
           <h1>Select Genomes from NCBI's RefSeq</h1>
         </div>
         <div
           className="nested-search-parameters-container"
-          style={{ backgroundColor: "grey" }}
+          // style={{ backgroundColor: "grey" }}
         >
           <div>
             <h4>Select Super Kingdom</h4>
@@ -79,10 +79,10 @@ class CustomizeContainer extends Component {
           </div>
           {/* This div will contain the returned values */}
         </div>
-        <div style={{ backgroundColor: "yellow", maxHeight: "230", overflow:"scroll" }}>
+        <div style={{ maxHeight: "230", overflow:"scroll" }}>
           <CollectionTable/>
         </div>
-        <div style={{ backgroundColor: "pink" }}>
+        <div className= 'customize-button-container'>
           <button type="button" className="btn btn-success" onClick={this.props.addToGenomeSample}>
             Add Selected Genome(s) to Sample
           </button>

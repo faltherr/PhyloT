@@ -85,7 +85,7 @@ export default function mainReducer (state = initialState, action){
                 ...state,
                 collection: state.collection.map(genome =>{
                     return(
-                        genome.TaxID === action.payload.TaxID
+                        genome.gbrs_paired_asm === action.payload.gbrs_paired_asm
                         ?
                         {...genome, GenomeNumer:action.payload.GenomeNumer}
                         :
@@ -96,7 +96,7 @@ export default function mainReducer (state = initialState, action){
         case REMOVE_FROM_COLLECTION:
         return {
             ...state,
-            collection: state.collection.filter(genome => genome.TaxID !== action.payload.value)
+            collection: state.collection.filter(genome => genome.gbrs_paired_asm !== action.payload.value)
         }
         case RESET_SEARCH:
             return{
@@ -204,9 +204,9 @@ export function updateCollection(genomes){
     }
 }
 
-export function removeFromCollection(taxID){
+export function removeFromCollection(uniqueID){
     return{
         type: REMOVE_FROM_COLLECTION,
-        payload: taxID
+        payload: uniqueID
     }
 }

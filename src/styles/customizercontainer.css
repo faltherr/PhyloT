@@ -1,6 +1,6 @@
 .wrapper{
    height:75.5vh;
-   background-color:blue; 
+   /* background-color:blue;  */
    display:grid;
    grid-template-rows: 0.5fr 2fr 5fr 0.5fr;
    grid-gap: 1em;
@@ -12,7 +12,7 @@
 .wrapper> div{
     /* background-color: #eee; */
     padding: 1em;
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 
 .nested-search-parameters-container{
@@ -24,4 +24,10 @@
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-gap: 1em;
+}
+
+.customize-button-container{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    justify-content: space-around;
 }
