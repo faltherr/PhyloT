@@ -41,7 +41,7 @@ class CustomizeContainer extends Component {
     return (
       <div className="wrapper">
         <div style={{ backgroundColor: "green" }}>
-          <h1>Select a genome from NCBI's RefSeq</h1>
+          <h1>Select Genomes from NCBI's RefSeq</h1>
         </div>
         <div
           className="nested-search-parameters-container"

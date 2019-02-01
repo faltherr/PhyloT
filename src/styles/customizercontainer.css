@@ -4,6 +4,7 @@
    display:grid;
    grid-template-rows: 0.5fr 2fr 5fr 0.5fr;
    grid-gap: 1em;
+   padding: 30px;
    /* Use grid auto rows if the rows are not explicitly sized in grid template row */
    /* grid-auto-rows: minmax(1000px, auto); */
 }
