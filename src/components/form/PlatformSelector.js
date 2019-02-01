@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import "../../styles/platformselector.css";
 import { connect } from "react-redux";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 // import {OverlayTrigger} from 'react-bootstrap'
 import {
   setInputType,
@@ -9,32 +9,31 @@ import {
 } from "../../reducers/mainReducer";
 import BiomSelector from "./BIOMSelector";
 import ExistingProject from "./ExistingProject";
-import { CSSTransitionGroup } from 'react-transition-group'
+import { CSSTransitionGroup } from "react-transition-group";
 import CustomModel from "./CustomModel";
-import {OverlayTrigger, Tooltip} from 'react-bootstrap'
+import "../../styles/platformselector.css";
 
 // This function is the container component for the platform selector part of the form
 
 const PlatformSelector = props => {
+  // This block of code sets up the rendering show/hide animations for form
+  //This is the conditional logic for custom models
+  let customModelChild = undefined;
+  if (props.readModel === "custom") {
+    customModelChild = <CustomModel key="cutom-model" />;
+  } else {
+    customModelChild = null;
+  }
 
-// This block of code sets up the rendering show/hide animations for form
-//This is the conditional logic for custom models
-let customModelChild = undefined;
-if (props.readModel === "custom"){
-  customModelChild = <CustomModel key='cutom-model'/>
-} else {
-  customModelChild = null
-}
-
-// This is the conditional logic for the type of genomes that will be input
-let inputTypeChild = undefined;
-if (props.inputType === 'biom') {
+  // This is the conditional logic for the type of genomes that will be input
+  let inputTypeChild = undefined;
+  if (props.inputType === "biom") {
     inputTypeChild = <BiomSelector key="biom" />;
-} else if (props.inputType === "existingProject")  {
+  } else if (props.inputType === "existingProject") {
     inputTypeChild = <ExistingProject key="existing" />;
-} else {
-  inputTypeChild = null
-}
+  } else {
+    inputTypeChild = null;
+  }
 
   // This is a click handler for the input type. Use it to hold the value and for adjusting styles for clicked selections.
   let handleClickInput = name => {
@@ -57,51 +56,68 @@ if (props.inputType === 'biom') {
               <h2>Illumnia</h2>
             </div>
             <div className="platform-name">
-            <OverlayTrigger 
-              placement='right' 
-              overlay={<Tooltip id={'nanopore-inactive-description'} className='platform-tooltip'>
-                This sequencing platform is under development but currently unavailable.
-                </Tooltip>
-                }>
+              <OverlayTrigger
+                placement="right"
+                overlay={
+                  <Tooltip
+                    id={"nanopore-inactive-description"}
+                    className="platform-tooltip"
+                  >
+                    This sequencing platform is under development but currently
+                    unavailable.
+                  </Tooltip>
+                }
+              >
                 <h2>Nanopore</h2>
-            </OverlayTrigger>
+              </OverlayTrigger>
             </div>
             <div className="platform-name">
-            <OverlayTrigger 
-              placement='right' 
-              overlay={<Tooltip id={'nanopore-inactive-description'} className='platform-tooltip'>
-                This sequencing platform is under development but currently unavailable.
-                </Tooltip>
-                }>
-              <h2>PacificBio</h2>
-            </OverlayTrigger>
+              <OverlayTrigger
+                placement="right"
+                overlay={
+                  <Tooltip
+                    id={"nanopore-inactive-description"}
+                    className="platform-tooltip"
+                  >
+                    This sequencing platform is under development but currently
+                    unavailable.
+                  </Tooltip>
+                }
+              >
+                <h2>PacificBio</h2>
+              </OverlayTrigger>
             </div>
           </div>
+        </div>
 
-          <div className="model-selection-container">
-            <div
-              className={`model-name${
-                props.readModel === "default" ? "-clicked" : ""
-              }`}
-              onClick={() => handleClickModel("default")}
-            >
-              <h2>Default Model</h2>
-            </div>
-            <div
-              className={`model-name${
-                props.readModel === "custom" ? "-clicked" : ""
-              }`}
-              onClick={() => handleClickModel("custom")}
-            >
-              <h2>Upload Custom Model</h2>
-            </div>
-            <CSSTransitionGroup   
-                  transitionName= "type-fade"
-                  transitionEnterTimeout= {500}
-                  transitionLeaveTimeout= {500}>
-                  {customModelChild}
-            </CSSTransitionGroup>
+        <div className="model-selection-container">
+        <h2>Upload a Model or Use SeqSim's Default </h2>
+        {/*  */}
+          <div className='model-option-container'>
+          <div
+            className={`model-name${
+              props.readModel === "default" ? "-clicked" : ""
+            }`}
+            onClick={() => handleClickModel("default")}
+          >
+            <h2>Default Model</h2>
           </div>
+          <div
+            className={`model-name${
+              props.readModel === "custom" ? "-clicked" : ""
+            }`}
+            onClick={() => handleClickModel("custom")}
+          >
+            <h2>Upload Custom Model</h2>
+          </div>
+          </div>
+          <CSSTransitionGroup
+            transitionName="type-fade"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}
+          >
+            {customModelChild}
+          </CSSTransitionGroup>
         </div>
       </div>
 
@@ -137,12 +153,13 @@ if (props.inputType === 'biom') {
             </div>
           </div>
           {/* Render the genome input type selection with this block*/}
-                <CSSTransitionGroup   
-                  transitionName= "type-fade"
-                  transitionEnterTimeout= {500}
-                  transitionLeaveTimeout= {500}>
-                  {inputTypeChild}
-                </CSSTransitionGroup>
+          <CSSTransitionGroup
+            transitionName="type-fade"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}
+          >
+            {inputTypeChild}
+          </CSSTransitionGroup>
         </div>
       </div>
     </Fragment>

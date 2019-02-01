@@ -11,7 +11,7 @@ import '../../styles/mainwizard.css'
 
 
 //This component holds the functionality of the main form page. It may be converted to a wizard like feature in the future.
-class WizardContainer extends Component{
+class FormContainer extends Component{
     constructor(){
         super()
         this.state={
@@ -96,4 +96,4 @@ let mapStateToProps = state => {
     )
 }
 
-export default connect(mapStateToProps)(WizardContainer)
+export default connect(mapStateToProps)(FormContainer)
