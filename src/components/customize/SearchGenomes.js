@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 //Placeholder data
 import { searchTableData } from '../data/data'
+import { ref_genomes } from '../data/ref_genome_subset'
 
 //Reducer action creators
 import { setSearchValues, setSelectedGenome, addToCollection } from '../../reducers/mainReducer'
@@ -18,12 +19,12 @@ let SearchGenomes = props => {
     // Here we dynamically filter the returned values from the search bar
     let handleChange = (event) => {
         let searchValue = event.target.value.toLowerCase()
-        let options = searchTableData
+        let options = ref_genomes
         options = options.filter(item => {
             return(
-                item.GenomeName.toLowerCase().search(searchValue) !== -1
+                item.organism_name.toLowerCase().search(searchValue) !== -1
                 ||
-                item.TaxID.toString().search(searchValue) !== -1
+                item.taxid.toString().search(searchValue) !== -1
             )
         })
         props.setSearchValues(options)
