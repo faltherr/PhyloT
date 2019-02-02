@@ -7,8 +7,10 @@ import SearchGenomes from './SearchGenomes'
 import PhyloTreeSelector from './PhyloTreeSelector'
 import CollectionTable from './CollectionTable'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-import { addToGenomeSample } from '../../reducers/mainReducer'
+import { addToGenomeSample, resetCollection } from '../../reducers/mainReducer'
 
 import "../../styles/customizercontainer.css";
 
@@ -34,6 +36,13 @@ class CustomizeContainer extends Component {
       [`${whichModal}`]: false
     });
   };
+
+  handleAddGenomesToSample = (genomes) => {
+    this.props.addToGenomeSample(genomes)
+    let count = this.props.collection.length
+    toast.success(`Added ${count} genomes to collection. Add more genomes or continue to review.`)
+    this.props.resetCollection()
+  }
 
   render() {
     return (
@@ -81,7 +90,7 @@ class CustomizeContainer extends Component {
           <CollectionTable/>
         </div>
         <div className= 'customize-button-container'>
-          <button type="button" className="btn btn-success" onClick={()=>this.props.addToGenomeSample(this.props.collection)}>
+          <button type="button" className="btn btn-success" onClick={()=>this.handleAddGenomesToSample(this.props.collection)}>
             Add Selected Genome(s) to Sample
           </button>
           <Link to = '/generate/review'>
@@ -99,4 +108,4 @@ let mapStateToProps = state => {
   return state;
 };
 
-export default connect(mapStateToProps, {addToGenomeSample})(CustomizeContainer);
+export default connect(mapStateToProps, {addToGenomeSample, resetCollection})(CustomizeContainer);

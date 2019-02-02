@@ -53,26 +53,26 @@ const CollectionTable = props => {
               Header: "Genome Sequence FASTA",
               accessor: "assembly_accession"
             },
-            // {
-            //   Header: "Genome Size",
-            //   accessor: " "
-            // },
-            // //Unknown value! Currently a place holder
-            // {
-            //   Header: "Number of Genomes",
-            //   accessor: " ",
-            //   Cell: renderEditable
-            // },
-            // {
-            //   Header: "Fold Coverage",
-            //   accessor: " ",
-            //   Cell: renderEditable
-            // },
-            // {
-            //   Header: "GC Content",
-            //   accessor: " ",
-            //   Cell: renderEditable
-            // }
+            {
+              Header: "Genome Size",
+              accessor: " "
+            },
+            //Unknown value! Currently a place holder
+            {
+              Header: "Number of Genomes",
+              accessor: " ",
+              Cell: renderEditable
+            },
+            {
+              Header: "Fold Coverage",
+              accessor: " ",
+              Cell: renderEditable
+            },
+            {
+              Header: "GC Content",
+              accessor: " ",
+              Cell: renderEditable
+            }
           ]}
         defaultPageSize={5}
         className='striped'

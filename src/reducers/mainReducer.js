@@ -10,6 +10,7 @@ const SET_SELECTED_GENOME = 'SET_SELECTED_GENOME'
 const ADD_TO_GENOME_SAMPLE = 'GENOME_SAMPLE'
 const RESET_SEARCH = 'RESET_SEARCH'
 const ADD_TO_COLLECTION = 'ADD_TO_COLLECTION'
+const RESET_COLLECTION = 'RESET_COLLECTION'
 const UPDATE_COLLECTION_GENOME_NUMBER = 'UPDATE_COLLECTION_GENOME_NUMBER'
 const REMOVE_FROM_COLLECTION = 'REMOVE_FROM_COLLECTION'
 
@@ -78,6 +79,11 @@ export default function mainReducer (state = initialState, action){
             return{
                 ...state,
                 genomeSample: [...state.genomeSample, ...action.payload]
+            }
+        case RESET_COLLECTION:
+            return{
+                ...state,
+                collection: initialState.collection
             }
         case UPDATE_COLLECTION_GENOME_NUMBER:
             return{
@@ -185,6 +191,12 @@ export function addToCollection(genomes){
     return{
         type: ADD_TO_COLLECTION,
         payload: genomes
+    }
+}
+
+export function resetCollection(){
+    return{
+        type: RESET_COLLECTION
     }
 }
 
