@@ -28,7 +28,6 @@ const initialState = {
 }
 
 export default function mainReducer (state = initialState, action){
-    console.log(action)
     switch (action.type){
         case READ_MODEL:
             return{
@@ -78,7 +77,7 @@ export default function mainReducer (state = initialState, action){
         case ADD_TO_GENOME_SAMPLE:
             return{
                 ...state,
-                genomeSample: {...state.genomeSample, ...state.collection}
+                genomeSample: [...state.genomeSample, ...action.payload]
             }
         case UPDATE_COLLECTION_GENOME_NUMBER:
             return{

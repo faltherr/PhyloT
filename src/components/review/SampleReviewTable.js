@@ -4,7 +4,7 @@ import ReactTable from "react-table";
 import "react-table/react-table.css";
 import "../../styles/tables.css";
 
-import { updateCollection, removeFromCollection } from '../../reducers/mainReducer'
+// import { updateCollection, removeFromCollection } from '../../reducers/mainReducer'
 
 const CollectionTable = props => {
 
@@ -17,19 +17,19 @@ const CollectionTable = props => {
         onBlur={e => {
           const data = [...props.collection];
           data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
-          props.updateCollection({ data });
+          // props.updateCollection({ data });
         }}
         dangerouslySetInnerHTML={{
-          __html: props.collection[cellInfo.index][cellInfo.column.id]
+          // __html: props.collection[cellInfo.index][cellInfo.column.id]
         }}
       />
     );
   };
 
   return (
-    <div className="collection-table-container">
+    <div className="review-table-container">
       <ReactTable
-        data={props.collection}
+        data={props.genomeSample}
         //This defines the way the columns are laid out
         columns= {[
             {
@@ -40,33 +40,43 @@ const CollectionTable = props => {
                 // width: 15
             },
             {
-              Header: "Superkingdom",
-              accessor: "superkingdom" // String-based value accessors!
+              Header: "Organism Name",
+              accessor: "organism_name" // String-based value accessors!
             },
             //Unknown value! Currently a place holder
             {
-              Header: "Taxonomic Rank",
+              Header: "Relative Abundance",
               accessor: "taxid"
               //   Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
             },
             {
-              Header: "Taxonomic ID",
-              accessor: "species_taxid"
+              Header: "Genome Sequence FASTA",
+              accessor: "assembly_accession"
             },
-            {
-              Header: "Genome Name",
-              accessor: "organism_name"
-            },
-            //Unknown value! Currently a place holder
-            {
-              Header: "Number of Genomes",
-              accessor: "isolate",
-              Cell: renderEditable
-            }
+            // {
+            //   Header: "Genome Size",
+            //   accessor: " "
+            // },
+            // //Unknown value! Currently a place holder
+            // {
+            //   Header: "Number of Genomes",
+            //   accessor: " ",
+            //   Cell: renderEditable
+            // },
+            // {
+            //   Header: "Fold Coverage",
+            //   accessor: " ",
+            //   Cell: renderEditable
+            // },
+            // {
+            //   Header: "GC Content",
+            //   accessor: " ",
+            //   Cell: renderEditable
+            // }
           ]}
         defaultPageSize={5}
         className='striped'
-        noDataText='No Genomes Selected. Select from above or review sample.'
+        noDataText='No Genomes Selected. Select more genomes or start over.'
       />
     </div>
   );
@@ -76,4 +86,4 @@ let mapStateToProps = state => {
   return state;
 };
 
-export default connect(mapStateToProps, {updateCollection, removeFromCollection})(CollectionTable);
+export default connect(mapStateToProps, {})(CollectionTable);

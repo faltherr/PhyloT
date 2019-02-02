@@ -5,7 +5,6 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 //Placeholder data
-import { searchTableData } from '../data/data'
 import { ref_genomes } from '../data/ref_genome_subset'
 
 //Reducer action creators
@@ -21,7 +20,6 @@ let SearchGenomes = props => {
         let searchValue = event.target.value.toLowerCase()
         let options = ref_genomes
         options = options.filter(item => {
-            console.log(item.organism_name)
             return(
                 item.organism_name.toLowerCase().search(searchValue) !== -1
                 ||
@@ -35,7 +33,6 @@ let SearchGenomes = props => {
     let handleAddToCollection = (genome, arr) => {
         let found = false;
         for(let i = 0; i < arr.length; i++){
-            console.log(22222,arr)
             if(arr[i].gbrs_paired_asm === genome.gbrs_paired_asm )
             found = true
             break

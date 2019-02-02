@@ -44,8 +44,6 @@ const PlatformSelector = props => {
     props.setReadModel(model);
   };
 
-  console.log("props", props);
-
   return (
     <Fragment>
       <div className="platform-container">

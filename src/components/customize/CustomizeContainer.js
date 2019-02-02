@@ -36,8 +36,6 @@ class CustomizeContainer extends Component {
   };
 
   render() {
-      console.log('customizer state', this.state)
-      console.log('PROPS', this.props)
     return (
       <div className="wrapper">
         <div>
@@ -83,7 +81,7 @@ class CustomizeContainer extends Component {
           <CollectionTable/>
         </div>
         <div className= 'customize-button-container'>
-          <button type="button" className="btn btn-success" onClick={this.props.addToGenomeSample}>
+          <button type="button" className="btn btn-success" onClick={()=>this.props.addToGenomeSample(this.props.collection)}>
             Add Selected Genome(s) to Sample
           </button>
           <Link to = '/generate/review'>

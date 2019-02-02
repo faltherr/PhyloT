@@ -1,8 +1,13 @@
 import React, {Component} from 'react'
+import "react-table/react-table.css";
+import { connect } from 'react-redux'
+
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import Modal from 'react-responsive-modal'
 import {Link} from 'react-router-dom'
+
+import SampleReviewTable from './SampleReviewTable'
 
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import '../../styles/sampleReview.css'
@@ -52,7 +57,7 @@ const columns = [{
 
 // React component for table results
 
-  export default class SampleReview extends Component{
+class SampleReview extends Component{
     constructor(){
         super()
             this.state={
@@ -133,8 +138,6 @@ const columns = [{
     }
     
     render(){
-        console.log(this.state.genomes)
-        // console.log('PROPS', this.props)
         return(
             <div  className='sample-review-page-container'>
                 <h1>Review Your Sample</h1>
@@ -146,8 +149,10 @@ const columns = [{
                         <button className='btn btn-danger'>Reset Sample</button>
                     </Link>
                 </div>
-
                 <BootstrapTable keyField='id' data={ this.state.genomes } columns={ columns } cellEdit={ cellEditFactory({ mode: 'click' , blurToSave:true, afterSaveCell:()=>this.totals(this.state.genomes)})}/>
+                
+                <SampleReviewTable/>
+                 
                     <p>Total Reads: {this.state.totalReads} </p> 
                     <p>Total Genomes: {this.state.totalGenomes}</p>
                     <p>Choose a Statistical Distribution:</p>
@@ -180,3 +185,9 @@ const columns = [{
         )
     }
 }
+
+let mapStateToProps = state => {
+    return state;
+  };
+
+export default connect(mapStateToProps, {})(SampleReview)
