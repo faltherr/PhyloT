@@ -8,3 +8,7 @@
 .review-sample-button-container button{
 
 }
+
+.sample-review-page-container{
+    min-height: 64vh;
+}

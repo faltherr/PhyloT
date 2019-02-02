@@ -8,7 +8,6 @@ import "../../styles/biomInput.css";
 // This component allows the user to upload their own custom model or select our default
 const CustomModel = props => {
   let handleOnDrop = (files, rejectedFiles) => {
-    console.log("These are the files uploading", files);
 
     if (rejectedFiles && rejectedFiles.length > 0) {
       const currentRejectFile = rejectedFiles[0];

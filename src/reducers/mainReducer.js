@@ -10,6 +10,7 @@ const SET_SELECTED_GENOME = 'SET_SELECTED_GENOME'
 const ADD_TO_GENOME_SAMPLE = 'GENOME_SAMPLE'
 const RESET_SEARCH = 'RESET_SEARCH'
 const ADD_TO_COLLECTION = 'ADD_TO_COLLECTION'
+const RESET_COLLECTION = 'RESET_COLLECTION'
 const UPDATE_COLLECTION_GENOME_NUMBER = 'UPDATE_COLLECTION_GENOME_NUMBER'
 const REMOVE_FROM_COLLECTION = 'REMOVE_FROM_COLLECTION'
 
@@ -28,7 +29,6 @@ const initialState = {
 }
 
 export default function mainReducer (state = initialState, action){
-    console.log(action)
     switch (action.type){
         case READ_MODEL:
             return{
@@ -78,14 +78,19 @@ export default function mainReducer (state = initialState, action){
         case ADD_TO_GENOME_SAMPLE:
             return{
                 ...state,
-                genomeSample: {...state.genomeSample, ...state.collection}
+                genomeSample: [...state.genomeSample, ...action.payload]
+            }
+        case RESET_COLLECTION:
+            return{
+                ...state,
+                collection: initialState.collection
             }
         case UPDATE_COLLECTION_GENOME_NUMBER:
             return{
                 ...state,
                 collection: state.collection.map(genome =>{
                     return(
-                        genome.TaxID === action.payload.TaxID
+                        genome.gbrs_paired_asm === action.payload.gbrs_paired_asm
                         ?
                         {...genome, GenomeNumer:action.payload.GenomeNumer}
                         :
@@ -96,7 +101,7 @@ export default function mainReducer (state = initialState, action){
         case REMOVE_FROM_COLLECTION:
         return {
             ...state,
-            collection: state.collection.filter(genome => genome.TaxID !== action.payload.value)
+            collection: state.collection.filter(genome => genome.gbrs_paired_asm !== action.payload.value)
         }
         case RESET_SEARCH:
             return{
@@ -189,6 +194,12 @@ export function addToCollection(genomes){
     }
 }
 
+export function resetCollection(){
+    return{
+        type: RESET_COLLECTION
+    }
+}
+
 //This action creator will reset the search on modal close or adding to cart
 export function resetSearch(){
     return{
@@ -204,9 +215,9 @@ export function updateCollection(genomes){
     }
 }
 
-export function removeFromCollection(taxID){
+export function removeFromCollection(uniqueID){
     return{
         type: REMOVE_FROM_COLLECTION,
-        payload: taxID
+        payload: uniqueID
     }
 }

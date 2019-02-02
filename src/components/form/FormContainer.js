@@ -64,7 +64,6 @@ class FormContainer extends Component{
     }
 
     render(){
-        console.log('State of Wizard', this.state.currentStep)
         return(
             <div className='wizard-main-container'>
             <section className='top-text'>

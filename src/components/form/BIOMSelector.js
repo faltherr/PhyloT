@@ -36,7 +36,6 @@ class BiomSelector extends Component {
   }
 
   handleOnDrop = (files, rejectedFiles) => {
-    console.log(files);
     if (rejectedFiles && rejectedFiles.length > 0) {
       const currentRejectFile = rejectedFiles[0];
       const currentRejectFileType = currentRejectFile.type;
@@ -49,9 +48,6 @@ class BiomSelector extends Component {
   };
 
   render() {
-    console.log("THis is the selected File", this.state.selected_file);
-    console.log('3286732863862', this.props.biomFile.length)
-    console.log('Input Type', this.props.inputType)
     const { selected_file } = this.state;
     return (
       <div id='biom-main-container' className={this.props.inputType==='biom'?'slideOut':'slideIn'}>
