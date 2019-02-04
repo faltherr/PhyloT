@@ -85,6 +85,7 @@ button.btn.btn-primary:hover{
     height: 80%;
     width: 65%;
     display: flex;
+    color: white;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;

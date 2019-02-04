@@ -3,6 +3,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { DebounceInput } from 'react-debounce-input'
+
+import Checkbox from '../utilities/Checkbox'
 
 //Placeholder data
 import { ref_genomes } from '../data/ref_genome_subset'
@@ -48,9 +51,13 @@ let SearchGenomes = props => {
     return(
         <div className='taxonomy-search-modal'>
             <h2> Search For Genomes </h2>
+            <div className='search-spikein-container'>
+                <p>Add genome as a spike-in? (Click for yes)</p>
+                <Checkbox/>
+            </div>
             <div className='genome-selection-ui-container'>
                 <div className='search-box-container'>
-                    <input id='genome-searchbar' placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)} ></input>
+                    <DebounceInput id='genome-searchbar' debounceTimeout={1000} placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)} />
                     <div className='genome-selector-box'>
                         {props.taxIdSearch.map(element =>{
                             return <div key ={`${element.gbrs_paired_asm}`} onClick={()=>props.setSelectedGenome(element)}>{element.organism_name}</div>
