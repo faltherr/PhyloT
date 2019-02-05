@@ -4,7 +4,7 @@ import ReactTable from "react-table";
 import "react-table/react-table.css";
 import "../../styles/tables.css";
 
-// import { updateCollection, removeFromCollection } from '../../reducers/mainReducer'
+import { updateSample, removeFromSample } from '../../reducers/mainReducer'
 
 const CollectionTable = props => {
 
@@ -15,12 +15,12 @@ const CollectionTable = props => {
         contentEditable
         suppressContentEditableWarning
         onBlur={e => {
-          const data = [...props.collection];
+          const data = [...props.genomeSample];
           data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
-          // props.updateCollection({ data });
+          props.updateSample({ data });
         }}
         dangerouslySetInnerHTML={{
-          // __html: props.collection[cellInfo.index][cellInfo.column.id]
+          __html: props.genomeSample[cellInfo.index][cellInfo.column.id]
         }}
       />
     );
@@ -36,7 +36,7 @@ const CollectionTable = props => {
                 Header: "",
                 accessor: "gbrs_paired_asm",
                 // Cell: cell => (<button onClick={(e) => this.handleButtonClick(e, cell)}> X </button>)
-                Cell: ({value}) => (<i id="remove-button" className="fas fa-times-circle" onClick={()=>props.removeFromCollection({value})}></i>),
+                Cell: ({value}) => (<i id="remove-button" className="fas fa-times-circle" onClick={()=>props.removeFromSample({value})}></i>),
                 // width: 15
             },
             {
@@ -46,12 +46,12 @@ const CollectionTable = props => {
             //Unknown value! Currently a place holder
             {
               Header: "Relative Abundance",
-              accessor: "taxid"
-              //   Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+              accessor: "taxid",
+              Cell: renderEditable
             },
             {
               Header: "Genome Sequence FASTA",
-              accessor: "assembly_accession"
+              accessor: "# assembly_accession"
             },
             {
               Header: "Genome Size",
@@ -86,4 +86,4 @@ let mapStateToProps = state => {
   return state;
 };
 
-export default connect(mapStateToProps, {})(CollectionTable);
+export default connect(mapStateToProps, {removeFromSample, updateSample})(CollectionTable);

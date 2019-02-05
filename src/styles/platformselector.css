@@ -1,3 +1,7 @@
+.content-container h2{
+    font-size: 20px;
+}
+
 /* .radio-button-text-container{
     display: flex;
 } */
@@ -28,28 +32,35 @@
 }
 
 .platform-name{
-    transition: background-color 1.2s ease;
-    border: 4px solid white;
+    transition: background-color 1.2s ease, color 1.2s ease;
+    border: 4px solid #333333;
     border-radius: 6px;
     margin: 8px;
     width: 200px !important;
+    cursor: pointer;
+    color: #333333;
 }
 
 .platform-name-clicked{
     /* transition: background-color 1.2s ease; */
-    border: 4px solid white;
+    border: 4px solid #333333;
     border-radius: 6px;
     margin: 8px;
-    width: 200px !important;
-    background-color: rgba(255,255,255,0.45);
+    width: 200px;
+    background-color: rgba(51,51,51,0.45);
+    /* color: rgba(255,255,255); */
+    color: #333333;
+    cursor: pointer;
 }
 
 .platform-name:nth-child(2){
     opacity: 0.3;
+    cursor: default;
 }
 
 .platform-name:nth-child(3){
     opacity: 0.3;
+    cursor: default;
 }
 
 #illumina:hover{
@@ -61,16 +72,16 @@
 }
 
 .platform-name h2{
-    color: white;
+    color: #333333;
     font-weight: bolder;
 }
 
 .platform-name-clicked h2{
-    color: white;
+    color: #333333;
     font-weight: bolder;
 }
 
-.model-selection-container{
+.model-selection-container > h2 {
     text-align: left;
 }
 
@@ -80,30 +91,32 @@
 }
 
 .model-name{
-    transition: background-color 1.2s ease;
-    border: 4px solid white;
+    transition: background-color 1.2s ease, color 1.2s ease;
+    border: 4px solid #333333;
     border-radius: 6px;
     margin: 8px;
     width: 300px;
     cursor: pointer;
+    color: #333333;
 }
 
 .model-name:hover{
-    background-color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255);
+    background-color: rgba(51,51,51,0.45);
 }
 
 .model-name h2{
-    color: white;
     font-weight: bolder;
 }
 
 .model-name-clicked {
     /* transition: background-color 1.2s ease; */
-    border: 4px solid white;
+    border: 4px solid #333333;
     border-radius: 6px;
     margin: 8px;
     width: 300px;
-    background-color: rgba(255,255,255,0.45);
+    background-color: rgba(51,51,51,0.45);
+    color: rgba(255,255,255);
 }
 
 .model-name-clicked h2{
@@ -115,17 +128,19 @@
     width: 100%
 }
 
-/* .input-selection-container{
-    width: 100%;
-} */
+
 
 .project-name{
-    transition: background-color 1.2s ease;
-    border: 4px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 1.2s ease, color 1.2s ease;
+    border: 4px solid #333333;
     border-radius: 6px;
     margin: 8px;
-    width: 450px;
+    width: 300px;
     cursor: pointer;
+    color: #333333;
 }
 
 .project-name:hover{
@@ -134,22 +149,40 @@
 
 .project-name-clicked{
     /* transition: background-color 1.2s ease; */
-    border: 4px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #333333;
     border-radius: 6px;
     margin: 8px;
-    width: 450px;
-    background-color: rgba(255,255,255,0.45);
+    width: 300px;
+    background-color: rgba(51,51,51,0.45);
+    color: rgba(255,255,255);
 }
 
 .project-name h2{
-    color: white;
+    color: #333333;
     font-weight: bold;
 }
 .project-name-clicked h2{
-    color: white;
+    color: #333333;
     font-weight: bolder;
 }
 
+.input-type-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}    
+
+/* .input-selection-container{
+    display: flex;
+    width: 100%;
+} */
+
+.input-selector{
+    display: flex
+}
 
 /* The animation styling is managed with these CSS rules */
 

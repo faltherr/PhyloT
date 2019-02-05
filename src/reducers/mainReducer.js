@@ -13,6 +13,8 @@ const ADD_TO_COLLECTION = 'ADD_TO_COLLECTION'
 const RESET_COLLECTION = 'RESET_COLLECTION'
 const UPDATE_COLLECTION_GENOME_NUMBER = 'UPDATE_COLLECTION_GENOME_NUMBER'
 const REMOVE_FROM_COLLECTION = 'REMOVE_FROM_COLLECTION'
+const UPDATE_SAMPLE = 'UPDATE_SAMPLE'
+const REMOVE_FROM_SAMPLE = 'REMOVE_FROM_SAMPLE'
 
 const initialState = {
     seqPlatform: 'illumina',
@@ -103,6 +105,24 @@ export default function mainReducer (state = initialState, action){
             ...state,
             collection: state.collection.filter(genome => genome.gbrs_paired_asm !== action.payload.value)
         }
+        case UPDATE_SAMPLE:
+            return{
+                ...state,
+                genomeSample: state.genomeSample.map(genome => {
+                    return(
+                        genome.gbrs_paired_asm === action.payload.value
+                        ?
+                        {...genome }
+                        :
+                        genome
+                    )
+                })
+            }
+        case REMOVE_FROM_SAMPLE:
+            return {
+                ...state,
+                genomeSample: state.genomeSample.filter(genome => genome.gbrs_paired_asm !== action.payload.value)
+            }
         case RESET_SEARCH:
             return{
                 ...state,
@@ -218,6 +238,21 @@ export function updateCollection(genomes){
 export function removeFromCollection(uniqueID){
     return{
         type: REMOVE_FROM_COLLECTION,
+        payload: uniqueID
+    }
+}
+
+//This action will update the cell selected by the user in the sample review table
+export function updateSample(uniqueID){
+    return{
+        type: UPDATE_SAMPLE,
+        payload: uniqueID
+    }
+}
+
+export function removeFromSample(uniqueID){
+    return{
+        type: REMOVE_FROM_SAMPLE,
         payload: uniqueID
     }
 }

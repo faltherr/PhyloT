@@ -67,8 +67,8 @@ class FormContainer extends Component{
         return(
             <div className='wizard-main-container'>
             <section className='top-text'>
-                <h1>GENOME SELECTOR</h1>
-                <p>Use the tool to build a synthetic genome community.</p>
+                <h1>seqSim Genome Selector</h1>
+                <p>Use seqSim to customize a synthetic genome community or upload a file of your own.</p>
             </section>
             <div className='main-content'>
                 <div className='wizard'>
