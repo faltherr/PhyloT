@@ -25,9 +25,9 @@ export default class MainLoading extends Component {
       <h4 style={{ color: "white" }}>
                 <TextLoop speed={3500} adjustingSpeed={10} mask={false}>
                   <span>Looking for input in database...</span>
-                  <span>Performing location prediction...</span>
-                  <span>Drawing map...</span>
-                  <span>Quality results take time...</span>
+                  <span>Performing some mathematics...</span>
+                  <span>Drawing pretty graphics...</span>
+                  <span>Exploring the wonders of the bioinformatics universe...</span>
                   <span>Be patient...</span>
                 </TextLoop>
               </h4>

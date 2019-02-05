@@ -106,9 +106,14 @@ class SampleReview extends Component {
           </Link>
         </div>
         <SampleReviewTable />
-
-        <p>Total Reads: {this.state.totalReads} </p>
-        <p>Total Genomes: {this.state.totalGenomes}</p>
+        <div className='table-footer'>
+            <div></div>
+            <div className='summary-container'>
+              <p>Totals:</p>
+              <p>Reads: {this.state.totalReads} </p>
+              <p>Genomes: {this.state.totalGenomes}</p>
+            </div>
+        </div>
 
         <p>Choose a Statistical Distribution:</p>
         <select>

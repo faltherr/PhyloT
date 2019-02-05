@@ -11,4 +11,16 @@
 
 .sample-review-page-container{
     min-height: 64vh;
+    padding: 30px;
+}
+
+.table-footer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.summary-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
