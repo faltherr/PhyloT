@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "react-table/react-table.css";
 import { connect } from "react-redux";
+import Button from 'react-bootstrap-button-loader'
 
 import Modal from "react-responsive-modal";
 import { Link } from "react-router-dom";
@@ -19,7 +20,8 @@ class SampleReview extends Component {
       openReviewModal: false,
       openKronaPlotModal: false,
       totalReads: "N/A",
-      totalGenomes: "N/A"
+      totalGenomes: "N/A",
+      mockLoadingState: true
     };
   }
 
@@ -49,6 +51,20 @@ class SampleReview extends Component {
   //         totalGenomes: genomeSum
   //     })
   // }
+
+  // Simulating an API request when the component updates
+  mockLoadingState = () => {
+    setTimeout(()=>
+      this.setState({
+        mockLoadingState: !this.state.mockLoadingState
+    }), 6000)
+  }
+
+  componentDidMount= () => {
+    console.log(1, this.state.mockLoadingState)
+    this.mockLoadingState()
+    console.log(2, this.state.mockLoadingState)
+  }
 
   openReviewModal = () => {
     this.setState({
@@ -102,9 +118,9 @@ class SampleReview extends Component {
           <option value="3">Log Normal Distribution</option>
         </select>
         <div>
-          <button className="btn btn-info" onClick={this.openKronaPlotModal}>
+          <Button className="btn btn-info" onClick={this.openKronaPlotModal} loading={this.state.mockLoadingState}>
             Explore Sample Distribution
-          </button>
+          </Button>
           <Modal
             open={this.state.openKronaPlotModal}
             onClose={this.closeKronaPlotModal}
