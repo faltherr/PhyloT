@@ -47,54 +47,57 @@ class CustomizeContainer extends Component {
   render() {
     return (
       <div className="wrapper">
-        <div>
+
+        <div id='customize-page-header'>
           <h1>Select Genomes from NCBI's RefSeq</h1>
         </div>
-        <div
-          className="nested-search-parameters-container"
-          // style={{ backgroundColor: "grey" }}
-        >
-          <div>
-            <h4>Filter by Super Kingdom</h4>
-            <div className="kingdom-pathogen-selection-container">
-              <SingleSelect optionName={superKingdomOptions} />
-              <label className="checkbox-label-style">
-                <Checkbox />
-                Exclude pathogens from this selection
-              </label>
-            </div>
-          </div>
-          <div>
-            <h4>
-              Search all available genomes by taxonomic name or ID or select from a phylogenetic tree
-            </h4>
-            {/* Consider doing a popup modal here for both 'smartsearch' and 'taxonomic tree' options */}
-            <div className='genome-search-modal-button-container'>
-              <button type="button" className="btn btn-info" onClick={() => this.openModal('isSearchModalOpen')}>
-                Search By Taxonomic Name
-              </button>
-                  <Modal id='searchModal' open={this.state.isSearchModalOpen} onClose={() => this.closeModal('isSearchModalOpen')} >
-                      <SearchGenomes closeModalFn ={this.closeModal}/>
-                  </Modal>
 
-              <button type="button" className="btn btn-info" onClick={() => this.openModal('isTreeModalOpen')}>
-                Select Node from Taxonomic Tree
-              </button>
-                  <Modal open={this.state.isTreeModalOpen} onClose={() => this.closeModal('isTreeModalOpen')}>
-                      <PhyloTreeSelector/>
-                  </Modal>
+        <div className="nested-search-parameters-container">
+
+            <h3>Search all available genomes by taxonomy or select from a phylogenetic tree</h3>
+            <div id="search-parameters-container">
+              
+              <div id="search-parameters-filters">
+                  <h4>Select a Super Kingdom</h4>
+                  <div id='search-filter-options-container'>
+                    <SingleSelect optionName={superKingdomOptions} />
+                    <label className="checkbox-label-style">
+                      <Checkbox />
+                      &nbsp; Exclude pathogens from this selection
+                    </label>
+                  </div>
+              </div>
+
+              <div id='search-parameters-methods'>
+                <h4 style={{alignSelf:'center'}}> Choose a selection method </h4>
+                <div className='genome-search-modal-button-container'>
+                  <button type="button" className="btn btn-info" onClick={() => this.openModal('isSearchModalOpen')}>
+                    Search By Taxonomic Name
+                  </button>
+                      <Modal id='searchModal' open={this.state.isSearchModalOpen} onClose={() => this.closeModal('isSearchModalOpen')} >
+                          <SearchGenomes closeModalFn ={this.closeModal}/>
+                      </Modal>
+
+                  <button type="button" className="btn btn-info" onClick={() => this.openModal('isTreeModalOpen')}>
+                    Select Node from Taxonomic Tree
+                  </button>
+                      <Modal open={this.state.isTreeModalOpen} onClose={() => this.closeModal('isTreeModalOpen')}>
+                          <PhyloTreeSelector/>
+                      </Modal>
+                </div>
+              </div>
             </div>
           </div>
-          {/* This div will contain the returned values */}
-        </div>
-        <div>
-        <h4>
-              Search all available genomes by taxonomic name or ID or select from a phylogenetic tree
-        </h4>
+        
+        <div id='sample-review-table'>
+        <h3>
+              Selected genomes staged to review
+        </h3>
         <div style={{ maxHeight: "230", overflow:"scroll" }}>
           <CollectionTable/>
         </div>
         </div>
+
         <div className= 'customize-button-container'>
           <button type="button" className="btn btn-success" onClick={()=>this.handleAddGenomesToSample(this.props.collection)}>
             Add Selected Genome(s) to Sample
@@ -105,6 +108,7 @@ class CustomizeContainer extends Component {
             </button>
           </Link>
         </div>
+
       </div>
     );
   }

@@ -15,14 +15,9 @@
     /* border: 1px solid white; */
 }
 
-.nested-search-parameters-container{
-    display: grid;
-    /* grid-template-columns */
-}
-
 .kingdom-pathogen-selection-container{
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-gap: 1em;
 }
 
@@ -34,7 +29,46 @@
 
 .genome-search-modal-button-container{
     display: flex;
+    justify-self: center;
+    align-self: center;
+    width:65%;
     justify-content: space-around;
     align-items: center;
-    width:65%;
+}
+
+#search-parameters-container{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 15px;
+    margin-top: 20px;
+    padding: 5px;
+    -webkit-box-shadow: 6px 8px 6px -6px #ccc;
+    -moz-box-shadow: 6px 8px 6px -6px #ccc;
+    box-shadow: 6px 8px 6px -6px #ccc;
+}
+
+#search-parameters-filters{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+#search-parameters-methods{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.nested-search-parameters-container > h3{
+    margin-top:0;
+}
+
+#search-filter-options-container{
+    display: flex;
+    width:100%;
+    justify-content: space-evenly;
+    /* flex-direction: co */
+}
+
+.css-10nd86i.basic-single{
+    min-width: 50%;
+    width: auto;
 }
