@@ -26,7 +26,7 @@ export default class SingleSelect extends Component{
         <Select
           className="basic-single"
           classNamePrefix="select"
-          defaultValue={this.props.optionName[0]}
+          // defaultValue={this.props.optionName[0]}
           isDisabled={false}
           isLoading={isLoading}
           isClearable={isClearable}

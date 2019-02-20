@@ -8,7 +8,7 @@ import { DebounceInput } from 'react-debounce-input'
 import Checkbox from '../utilities/Checkbox'
 
 //Placeholder data
-import { ref_genomes } from '../data/ref_genome_subset'
+import { ref_genomes } from '../data/ref_genome_subset_v5'
 
 //Reducer action creators
 import { setSearchValues, setSelectedGenome, addToCollection } from '../../reducers/mainReducer'
@@ -36,7 +36,7 @@ let SearchGenomes = props => {
     let handleAddToCollection = (genome, arr) => {
         let found = false;
         for(let i = 0; i < arr.length; i++){
-            if(arr[i].gbrs_paired_asm === genome.gbrs_paired_asm )
+            if(arr[i].comboID === genome.comboID )
             found = true
             break
         }
@@ -48,20 +48,35 @@ let SearchGenomes = props => {
             toast.error(`${genome.organism_name} already in collection!`)
         }
     }
+
+    let handleSelect = () => {
+
+    }
+
     return(
         <div className='taxonomy-search-modal'>
             <h2> Search For Genomes </h2>
-            <div className='search-spikein-container'>
-                <p>Add genome as a spike-in? (Click for yes)</p>
-                <Checkbox/>
-            </div>
             <div className='genome-selection-ui-container'>
                 <div className='search-box-container'>
                     <DebounceInput id='genome-searchbar' debounceTimeout={1000} placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)} />
                     <div className='genome-selector-box'>
-                        {props.taxIdSearch.map(element =>{
-                            return <div key ={`${element.gbrs_paired_asm}`} onClick={()=>props.setSelectedGenome(element)}>{element.organism_name}</div>
-                        })}
+                        <div id='genome-selector-box-header'>
+                            <p style={{fontWeight:'bold'}}>Genome Name(Taxonomic ID)</p>
+                            <p style={{justifySelf:'center', fontWeight:'bold'}}>Add as a spike in?</p>
+                        </div>
+                        <div id='genome-selector-box-body'>
+                            {props.taxIdSearch.map(element =>{
+                                return (
+                                <div id='genome-selector-box-element-container' className={props.selectedGenome.comboID === element.comboID ? 'clicked' : null}>
+                                    <div className={`genome-search-list-item`} key ={element.comboID} onClick={()=>props.setSelectedGenome(element)}>
+                                        <p>{`${element.organism_name}(${element.taxid})`}</p>
+                                        <small> &nbsp;Genomes:{element.speciesNumGenome === 'na' ? 'N/A' : element.speciesNumGenome}  &nbsp; Pathogen: {element.pathogen === 0 ? 'Yes' : 'No'}</small>
+                                    </div>
+                                    <Checkbox style={{alignSelf:'center', justifySelf:'center'}}/>
+                                </div>
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
                     </div>
@@ -71,7 +86,7 @@ let SearchGenomes = props => {
                         ?
                         <div className='search-selection-review'>
                             <p>You selected: {props.selectedGenome.organism_name} </p>
-                            <p>This contains: {props.selectedGenome.numberOfGenomes} genomes</p>
+                            <p>This contains: {props.selectedGenome.speciesNumGenome} genomes</p>
 
                             {/* /* conditionally render a box that will display if the user has selected one genome that allows them to adjust the number of genomes in sample */}
                         </div>

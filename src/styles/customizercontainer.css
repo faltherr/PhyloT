@@ -1,5 +1,5 @@
 .wrapper{
-   height:75.5vh;
+   height:90vh;
    /* background-color:blue;  */
    display:grid;
    grid-template-rows: 0.5fr 2fr 5fr 0.5fr;
@@ -30,4 +30,11 @@
     display: grid;
     grid-template-columns: 2fr 2fr;
     justify-content: space-around;
+}
+
+.genome-search-modal-button-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width:65%;
 }
