@@ -47,7 +47,6 @@ const initialState = {
 };
 
 export default function mainReducer(state = initialState, action) {
-    console.log('Action payload', action.type)
   switch (action.type) {
     case READ_MODEL:
       return {
@@ -147,9 +146,12 @@ export default function mainReducer(state = initialState, action) {
     case GET_GENOMES + PENDING:
       return { ...state, pendingRequest: true };
     case GET_GENOMES + FULFILLED:
+    let alphaSortGenomes = action.payload.data.sort((a,b)=>{
+        return a.comboID.toLowerCase().localeCompare(b.comboID.toLowerCase())
+    })
       return {
         ...state,
-        allNcbiGenomes: action.payload.data,
+        allNcbiGenomes: alphaSortGenomes,
         errorMessage: "",
         pendingRequest: false
       };

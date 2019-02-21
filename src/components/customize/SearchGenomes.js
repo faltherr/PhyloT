@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { DebounceInput } from 'react-debounce-input'
+import{ Badge } from 'react-bootstrap'
 
 import Checkbox from '../utilities/Checkbox'
 
@@ -55,7 +56,7 @@ let SearchGenomes = props => {
             <h2> Search For Genomes </h2>
             <div className='genome-selection-ui-container'>
                 <div className='search-box-container'>
-                    <DebounceInput id='genome-searchbar' debounceTimeout={1000} placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)} />
+                    <DebounceInput id='genome-searchbar' debounceTimeout={0} placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)} /> <Badge variant="dark">{props.allNcbiGenomes.length}</Badge>
                     <div className='genome-selector-box'>
                         <div id='genome-selector-box-header'>
                             <p style={{fontWeight:'bold'}}>Genome Name(Taxonomic ID)</p>
