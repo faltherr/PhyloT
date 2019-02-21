@@ -1,10 +1,10 @@
 .wrapper{
-   height:90vh;
+   height:95vh;
    /* background-color:blue;  */
    display:grid;
-   grid-template-rows: 0.5fr 2fr 5fr 0.5fr;
-   grid-gap: 1em;
-   padding: 30px;
+   grid-template-rows: 0.25fr 1fr 2fr 1fr;
+   /* grid-gap: 1em; */
+   padding: 10px 30px 0px 30px;
    /* Use grid auto rows if the rows are not explicitly sized in grid template row */
    /* grid-auto-rows: minmax(1000px, auto); */
 }
@@ -40,11 +40,10 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-gap: 15px;
-    margin-top: 20px;
     padding: 5px;
-    -webkit-box-shadow: 6px 8px 6px -6px #ccc;
-    -moz-box-shadow: 6px 8px 6px -6px #ccc;
-    box-shadow: 6px 8px 6px -6px #ccc;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #search-parameters-filters{
@@ -71,4 +70,21 @@
 .css-10nd86i.basic-single{
     min-width: 50%;
     width: auto;
+}
+
+#table-container{
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-header-container{
+    display: flex;
+    margin-bottom:20px
+}
+
+#add-genomes-to-sample-button{
+    height:34px;
+    width: 300px;
+    justify-self: center;
 }

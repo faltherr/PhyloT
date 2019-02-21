@@ -6,6 +6,10 @@
     justify-items: center;
 }
 
+#customize-page-header{
+    padding: 0;
+}
+
 .genome-selection-ui-container{
     display: flex;
     flex-direction: row;
@@ -119,4 +123,8 @@
 
 .genome-search-list-item > p{
     margin: 0
+}
+
+.styles_modal__gNwvD{
+    max-width: 100%;
 }

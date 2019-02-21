@@ -18,18 +18,19 @@ import '../../styles/searchGenomes.css'
 
 //This functional component handles the searchbar functionality
 let SearchGenomes = props => {
+
     // Here we dynamically filter the returned values from the search bar
     let handleChange = (event) => {
         let searchValue = event.target.value.toLowerCase()
         let options = ref_genomes
-        options = options.filter(item => {
+        let filteredOptions = options.filter(item => {
             return(
-                item.organism_name.toLowerCase().search(searchValue) !== -1
-                ||
-                item.taxid.toString().search(searchValue) !== -1
+                item.comboID.toLowerCase().search(searchValue) !== -1
+                // ||
+                // item.taxid.toString().search(searchValue) !== -1
             )
         })
-        props.setSearchValues(options)
+        props.setSearchValues(filteredOptions)
     }
 
     //This will check the sample array and the collection array for the same value and only add the value if it is not present
@@ -49,10 +50,6 @@ let SearchGenomes = props => {
         }
     }
 
-    let handleSelect = () => {
-
-    }
-
     return(
         <div className='taxonomy-search-modal'>
             <h2> Search For Genomes </h2>
@@ -65,10 +62,10 @@ let SearchGenomes = props => {
                             <p style={{justifySelf:'center', fontWeight:'bold'}}>Add as a spike in?</p>
                         </div>
                         <div id='genome-selector-box-body'>
-                            {props.taxIdSearch.map(element =>{
+                            {props.allNcbiGenomes.map((element, i) =>{
                                 return (
-                                <div id='genome-selector-box-element-container' className={props.selectedGenome.comboID === element.comboID ? 'clicked' : null}>
-                                    <div className={`genome-search-list-item`} key ={element.comboID} onClick={()=>props.setSelectedGenome(element)}>
+                                <div id='genome-selector-box-element-container' key={`${element.comboID}${i}`} className={props.selectedGenome.comboID === element.comboID ? 'clicked' : null}>
+                                    <div className={`genome-search-list-item`} key ={`${element.comboID}${i}`} onClick={()=>props.setSelectedGenome(element)}>
                                         <p>{`${element.organism_name}(${element.taxid})`}</p>
                                         <small> &nbsp;Genomes:{element.speciesNumGenome === 'na' ? 'N/A' : element.speciesNumGenome}  &nbsp; Pathogen: {element.pathogen === 0 ? 'Yes' : 'No'}</small>
                                     </div>

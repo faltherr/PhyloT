@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { addToGenomeSample, resetCollection } from '../../reducers/mainReducer'
+import { addToGenomeSample, resetCollection, getGenomes } from '../../reducers/mainReducer'
 
 import "../../styles/customizercontainer.css";
 
@@ -23,6 +23,10 @@ class CustomizeContainer extends Component {
       isSearchModalOpen: false,
       isTreeModalOpen: false
     };
+  }
+
+  componentDidMount(){
+    this.props.getGenomes()
   }
 
   openModal = (whichModal) => {
@@ -53,8 +57,9 @@ class CustomizeContainer extends Component {
         </div>
 
         <div className="nested-search-parameters-container">
-
-            <h3>Search all available genomes by taxonomy or select from a phylogenetic tree</h3>
+            <div className='form-header-container'>
+              <h3>Search all available genomes by taxonomy or select from a phylogenetic tree</h3>
+            </div>
             <div id="search-parameters-container">
               
               <div id="search-parameters-filters">
@@ -90,19 +95,19 @@ class CustomizeContainer extends Component {
           </div>
         
         <div id='sample-review-table'>
-        <h3>
-              Selected genomes staged to review
-        </h3>
-        <div style={{ maxHeight: "230", overflow:"scroll" }}>
+        <div className='form-header-container'>
+          <h3>Selected genomes staged to review</h3>
+        </div>
+        <div style={{ maxHeight: "230", overflow:"scroll" }} id='table-container'>
           <CollectionTable/>
         </div>
         </div>
 
         <div className= 'customize-button-container'>
-          <button type="button" className="btn btn-success" onClick={()=>this.handleAddGenomesToSample(this.props.collection)}>
+          <button id='add-genomes-to-sample-button' type="button" className="btn btn-success" onClick={()=>this.handleAddGenomesToSample(this.props.collection)}>
             Add Selected Genome(s) to Sample
           </button>
-          <Link to = '/generate/review'>
+          <Link to ='/generate/review'>
             <button type="button" className="btn btn-info">
               Review Sample
             </button>
@@ -118,4 +123,4 @@ let mapStateToProps = state => {
   return state;
 };
 
-export default connect(mapStateToProps, {addToGenomeSample, resetCollection})(CustomizeContainer);
+export default connect(mapStateToProps, {addToGenomeSample, resetCollection, getGenomes})(CustomizeContainer);
