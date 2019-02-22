@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { addToGenomeSample, resetCollection, getGenomes } from '../../reducers/mainReducer'
+import { addToGenomeSample, resetCollection, getGenomes, filterGenomes, updateKingdomFilter, updatepathogenFilter } from '../../reducers/mainReducer'
 
 import "../../styles/customizercontainer.css";
 
@@ -21,13 +21,22 @@ class CustomizeContainer extends Component {
     super();
     this.state = {
       isSearchModalOpen: false,
-      isTreeModalOpen: false
+      isTreeModalOpen: false,
+      excludePathogens: false
     };
   }
 
   componentDidMount(){
     this.props.getGenomes()
   }
+
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.kingdomFilter !== prevProps.kingdomFilter || this.props.pathogenFilter !== prevProps.pathogenFilter) {
+      this.props.filterGenomes()
+    }
+  }
+
 
   openModal = (whichModal) => {
     this.setState({
@@ -65,9 +74,9 @@ class CustomizeContainer extends Component {
               <div id="search-parameters-filters">
                   <h4>Select a Super Kingdom</h4>
                   <div id='search-filter-options-container'>
-                    <SingleSelect optionName={superKingdomOptions} />
+                    <SingleSelect optionName={superKingdomOptions} onChange={(kingdom)=>this.props.updateKingdomFilter(kingdom)}/>
                     <label className="checkbox-label-style">
-                      <Checkbox />
+                      <Checkbox onClick={()=>this.props.updatepathogenFilter(!this.props.pathogenFilter)}/>
                       &nbsp; Exclude pathogens from this selection
                     </label>
                   </div>
@@ -123,4 +132,4 @@ let mapStateToProps = state => {
   return state;
 };
 
-export default connect(mapStateToProps, {addToGenomeSample, resetCollection, getGenomes})(CustomizeContainer);
+export default connect(mapStateToProps, {addToGenomeSample, resetCollection, getGenomes, filterGenomes, updateKingdomFilter, updatepathogenFilter})(CustomizeContainer);

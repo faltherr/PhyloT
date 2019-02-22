@@ -56,19 +56,23 @@ let SearchGenomes = props => {
             <h2> Search For Genomes </h2>
             <div className='genome-selection-ui-container'>
                 <div className='search-box-container'>
-                    <DebounceInput id='genome-searchbar' debounceTimeout={0} placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)} /> <Badge variant="dark">{props.allNcbiGenomes.length}</Badge>
+                    <DebounceInput id='genome-searchbar' debounceTimeout={0} placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)} /> <Badge variant="dark">{`${props.filteredGenomes.length} genome${props.filteredGenomes.length !== 1 ? 's' : ''} to choose from`}</Badge>
                     <div className='genome-selector-box'>
                         <div id='genome-selector-box-header'>
                             <p style={{fontWeight:'bold'}}>Genome Name(Taxonomic ID)</p>
                             <p style={{justifySelf:'center', fontWeight:'bold'}}>Add as a spike in?</p>
                         </div>
                         <div id='genome-selector-box-body'>
-                            {props.allNcbiGenomes.map((element, i) =>{
+                            {props.filteredGenomes.map((element, i) =>{
                                 return (
                                 <div id='genome-selector-box-element-container' key={`${element.comboID}${i}`} className={props.selectedGenome.comboID === element.comboID ? 'clicked' : null}>
                                     <div className={`genome-search-list-item`} key ={`${element.comboID}${i}`} onClick={()=>props.setSelectedGenome(element)}>
                                         <p>{`${element.organism_name}(${element.taxid})`}</p>
-                                        <small> &nbsp;Genomes:{element.speciesNumGenome === 'na' ? 'N/A' : element.speciesNumGenome}  &nbsp; Pathogen: {element.pathogen === 0 ? 'Yes' : 'No'}</small>
+                                        <div id='search-list-item-small-details'>
+                                            <small> &nbsp; Genomes:{element.speciesNumGenome === 'na' ? 'N/A' : element.speciesNumGenome}  &nbsp; Pathogen: {element.pathogen === 0 ? 'No' : 'Yes'} </small>
+                                            <small> &nbsp; Submitter: {element.submitter} </small>
+                                            <small> &nbsp; ASM(UID): {element.gbrs_paired_asm}  </small>
+                                        </div>
                                     </div>
                                     <Checkbox style={{alignSelf:'center', justifySelf:'center'}}/>
                                 </div>

@@ -8,6 +8,9 @@ const BIOM_FILE = "BIOM_FILE";
 const READ_MODEL = "READ_MODEL";
 const CUSTOM_MODEL = "CUSTOM_MODEL";
 const TAX_ID_SEARCH = "TAX_ID_SEARCH";
+const FILTER_GENOMES = "FILTER_GENOMES";
+const UPDATE_KINGDOM_FILTER = "UPDATE_KINGDOM_FILTER"
+const UPDATE_PATHOGEN_FILTER = "UPDATE_PATHOGEN_FILTER"
 const SET_SELECTED_GENOME = "SET_SELECTED_GENOME";
 const ADD_TO_GENOME_SAMPLE = "GENOME_SAMPLE";
 const RESET_SEARCH = "RESET_SEARCH";
@@ -17,6 +20,7 @@ const UPDATE_COLLECTION_GENOME_NUMBER = "UPDATE_COLLECTION_GENOME_NUMBER";
 const REMOVE_FROM_COLLECTION = "REMOVE_FROM_COLLECTION";
 const UPDATE_SAMPLE = "UPDATE_SAMPLE";
 const REMOVE_FROM_SAMPLE = "REMOVE_FROM_SAMPLE";
+
 
 // API Requests
 const FULFILLED = '_FULFILLED'
@@ -32,8 +36,12 @@ const initialState = {
   existingProjectFile: [],
   biomFile: [],
   readModel: "default",
-  //taxId Search holds the list of genomes available populated with data transformed from NCBI
+  //taxId Search holds the list of all genomes available populated with data transformed from NCBI
   allNcbiGenomes: [],
+  //filteredGenomes manages the user selected filters to subset the available data in the search genomes
+  filteredGenomes: [],
+  kingdomFilter: null,
+  pathogenFilter: false,
   //selectedGenome displays the genome selected in the search by taxonomicID box
   selectedGenome: [],
   //The collection is the holding area for genomes that will be added to the final sample
@@ -83,10 +91,37 @@ export default function mainReducer(state = initialState, action) {
         ...state,
         allNcbiGenomes: action.payload
       };
+    case FILTER_GENOMES:
+      let newFilterSet = state.allNcbiGenomes.filter(element =>{
+        if(state.pathogenFilter && state.kingdomFilter){
+            return element.superkingdomName === state.kingdomFilter &&
+                   element.pathogen === 0
+        } else if (state.pathogenFilter){
+            return element.pathogen === 0
+        } else if (state.kingdomFilter){
+            return element.superkingdomName === state.kingdomFilter
+        } else {
+            return state.allNcbiGenomes
+        }
+      })
+      return{
+          ...state,
+          filteredGenomes: newFilterSet
+      }
+    case UPDATE_KINGDOM_FILTER:
+      return{
+          ...state,
+          kingdomFilter: action.payload
+      }
+    case UPDATE_PATHOGEN_FILTER:
+      return{
+          ...state,
+          pathogenFilter: !state.pathogenFilter
+      }
     case SET_SELECTED_GENOME:
       return {
         ...state,
-        selectedGenome: action.payload
+        selectedGenome: action.payload,
       };
     case ADD_TO_COLLECTION:
       return {
@@ -152,6 +187,7 @@ export default function mainReducer(state = initialState, action) {
       return {
         ...state,
         allNcbiGenomes: alphaSortGenomes,
+        filteredGenomes: alphaSortGenomes,
         errorMessage: "",
         pendingRequest: false
       };
@@ -290,6 +326,28 @@ export function removeFromSample(uniqueID) {
     payload: uniqueID
   };
 }
+
+//This action will subset the NCBI genomes by the user defined filters, "Kingdom" and "Pathogen"
+export function filterGenomes(){
+    return{
+        type: FILTER_GENOMES,
+    }
+}
+
+export function updateKingdomFilter(kingdom){
+    let kingdomValue = kingdom ? kingdom.value : null
+    return{
+        type: UPDATE_KINGDOM_FILTER,
+        payload: kingdomValue
+    }
+}
+
+export function updatepathogenFilter(){
+    return{
+        type: UPDATE_PATHOGEN_FILTER,
+    }
+}
+
 
 //This action will make the GET request to grab the genomes available in the database
 export function getGenomes() {

@@ -1,7 +1,7 @@
 export const superKingdomOptions = [
-    { value: 'bacteria', label: 'Bacteria', isFixed: true },
-    { value: 'archaea', label: 'Archaea'},
-    { value: 'virus', label: 'Virus'},
+    { value: 'Bacteria', label: 'Bacteria', isFixed: true },
+    { value: 'Archaea', label: 'Archaea'},
+    { value: 'Viruses', label: 'Virus'},
   ];
   
 export const searchTableData = [

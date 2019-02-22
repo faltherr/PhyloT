@@ -33,6 +33,7 @@ export default class SingleSelect extends Component{
           isSearchable={isSearchable}
           name="color"
           options={this.props.optionName}
+          onChange={this.props.onChange}
         />
       </Fragment>
     );

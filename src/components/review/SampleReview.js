@@ -61,9 +61,7 @@ class SampleReview extends Component {
   }
 
   componentDidMount= () => {
-    console.log(1, this.state.mockLoadingState)
     this.mockLoadingState()
-    console.log(2, this.state.mockLoadingState)
   }
 
   openReviewModal = () => {
