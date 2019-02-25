@@ -89,7 +89,7 @@ export default function mainReducer(state = initialState, action) {
     case TAX_ID_SEARCH:
       return {
         ...state,
-        allNcbiGenomes: action.payload
+        filteredGenomes: action.payload
       };
     case FILTER_GENOMES:
       let newFilterSet = state.allNcbiGenomes.filter(element =>{
@@ -181,8 +181,12 @@ export default function mainReducer(state = initialState, action) {
     case GET_GENOMES + PENDING:
       return { ...state, pendingRequest: true };
     case GET_GENOMES + FULFILLED:
-    let alphaSortGenomes = action.payload.data.sort((a,b)=>{
-        return a.comboID.toLowerCase().localeCompare(b.comboID.toLowerCase())
+    let genomeData_modified = action.payload.data.map(genome => {
+      genome.comboID = genome.comboID.toLowerCase()
+      return genome
+    })
+    let alphaSortGenomes = genomeData_modified.sort((a,b)=>{
+        return a.comboID.localeCompare(b.comboID)
     })
       return {
         ...state,

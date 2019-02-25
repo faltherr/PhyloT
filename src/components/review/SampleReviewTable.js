@@ -55,12 +55,12 @@ const CollectionTable = props => {
             },
             {
               Header: "Genome Size",
-              accessor: " "
+              accessor: "genome size"
             },
             //Unknown value! Currently a place holder
             {
               Header: "Number of Genomes",
-              accessor: " ",
+              accessor: "speciesNumGenome",
               Cell: renderEditable
             },
             {
@@ -70,7 +70,12 @@ const CollectionTable = props => {
             },
             {
               Header: "GC Content",
-              accessor: " ",
+              accessor: "GC%",
+              Cell: renderEditable
+            },
+            {
+              Header: "Spike In",
+              accessor: "spikeIn",
               Cell: renderEditable
             }
           ]}

@@ -8,9 +8,6 @@ import{ Badge } from 'react-bootstrap'
 
 import Checkbox from '../utilities/Checkbox'
 
-//Placeholder data
-import { ref_genomes } from '../data/ref_genome_subset_v5'
-
 //Reducer action creators
 import { setSearchValues, setSelectedGenome, addToCollection } from '../../reducers/mainReducer'
 
@@ -23,12 +20,10 @@ let SearchGenomes = props => {
     // Here we dynamically filter the returned values from the search bar
     let handleChange = (event) => {
         let searchValue = event.target.value.toLowerCase()
-        let options = ref_genomes
+        let options = props.allNcbiGenomes
         let filteredOptions = options.filter(item => {
             return(
-                item.comboID.toLowerCase().search(searchValue) !== -1
-                // ||
-                // item.taxid.toString().search(searchValue) !== -1
+                item.comboID.search(searchValue) !== -1
             )
         })
         props.setSearchValues(filteredOptions)
@@ -36,12 +31,16 @@ let SearchGenomes = props => {
 
     //This will check the sample array and the collection array for the same value and only add the value if it is not present
     let handleAddToCollection = (genome, arr) => {
+        console.log('Add to collection?')
         let found = false;
+        console.log('length of collection', props.collection.length)
         for(let i = 0; i < arr.length; i++){
+            console.log(arr[i].organism_name)
             if(arr[i].comboID === genome.comboID )
             found = true
-            break
         }
+        console.log('FOUND!', found)
+        console.log(genome.comboID)
         if(!found){
             props.addToCollection(genome)
             toast.success(`Added ${genome.organism_name} to collection. Close the window to review.`)
@@ -50,13 +49,13 @@ let SearchGenomes = props => {
             toast.error(`${genome.organism_name} already in collection!`)
         }
     }
-
+    console.log('The collection', props.collection)
     return(
         <div className='taxonomy-search-modal'>
             <h2> Search For Genomes </h2>
             <div className='genome-selection-ui-container'>
                 <div className='search-box-container'>
-                    <DebounceInput id='genome-searchbar' debounceTimeout={0} placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)} /> <Badge variant="dark">{`${props.filteredGenomes.length} genome${props.filteredGenomes.length !== 1 ? 's' : ''} to choose from`}</Badge>
+                    <DebounceInput id='genome-searchbar' debounceTimeout={1000} placeholder='Enter a taxonomic name or ID' onChange = {(e) => handleChange(e)} /> <Badge variant="dark">{`${props.filteredGenomes.length} genome${props.filteredGenomes.length !== 1 ? 's' : ''} to choose from`}</Badge>
                     <div className='genome-selector-box'>
                         <div id='genome-selector-box-header'>
                             <p style={{fontWeight:'bold'}}>Genome Name(Taxonomic ID)</p>

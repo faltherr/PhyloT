@@ -41,7 +41,7 @@ const CollectionTable = props => {
             },
             {
               Header: "Superkingdom",
-              accessor: "superkingdom" // String-based value accessors!
+              accessor: "superkingdomName" // String-based value accessors!
             },
             //Unknown value! Currently a place holder
             {
@@ -60,7 +60,7 @@ const CollectionTable = props => {
             //Unknown value! Currently a place holder
             {
               Header: "Number of Genomes",
-              accessor: "isolate",
+              accessor: "speciesNumGenome",
               Cell: renderEditable
             }
           ]}
