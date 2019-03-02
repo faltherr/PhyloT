@@ -2,11 +2,12 @@ import React from 'react'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 // import {Link} from 'react-router-dom'
 import main_logo from '../images/SeqSimLogo.png'
+import { connect } from 'react-redux'
+import { setInputType } from '../reducers/mainReducer'
 
 import '../styles/navbar.css'
 
-export default class NavBar extends React.Component {
-    render() {
+let NavBar = props => {
         return (
             <Navbar>
                 <Navbar.Header>
@@ -21,8 +22,9 @@ export default class NavBar extends React.Component {
                     <NavDropdown eventKey={3} title="Build a Synthetic Dataset" id="basic-nav-dropdown">
                         <MenuItem eventKey={3.1} href='/generate'>Get Started</MenuItem>
                         <MenuItem divider />
-                        <MenuItem eventKey={3.2} href='/generate/biom_selector'>Generate From BIOM FILE</MenuItem>
-                        <MenuItem eventKey={3.3} href='/generate/community_selector'>Select Custom Community</MenuItem>
+                        
+                        {/* <MenuItem eventKey={3.2} href={window.location.pathname === '/generate' ? '#' : '/generate' }  onClick={()=>props.setInputType('biom')}>Generate From BIOM FILE</MenuItem> */}
+                        <MenuItem eventKey={3.3} href='/generate/customize'>Select Custom Community</MenuItem>
                     </NavDropdown>
                     <NavItem eventKey={2} href="/">
                         Learn More
@@ -34,4 +36,9 @@ export default class NavBar extends React.Component {
             </Navbar>
         )
     }
+
+let mapStateToProps = state => {
+    return state
 }
+
+export default connect(mapStateToProps, {setInputType})(NavBar)

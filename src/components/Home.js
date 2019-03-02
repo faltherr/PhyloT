@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../styles/home.css'
-// import { Button } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
 export default class Home extends Component {
@@ -19,7 +18,9 @@ export default class Home extends Component {
                 </div>
             </div>
             <div className='home-section-2'>
-                <h3> Advanced Bioinformatics Solutions </h3>
+                <div className='home-section-2-header-container'>
+                    <h3> Advanced Bioinformatics Solutions </h3>
+                </div>
                 <div className='seqsim-description'>
                     <h4>SeqSim generates phylogenetic trees based on the NCBI taxonomy from a list of taxonomic names and identifiers of protein accessions. SeqSim outputs a pruned tree in the selected output format. Complete clades can be included, with interruption at desired taxonomic levels and with optional filtering of unwanted nodes.</h4>
                 </div>

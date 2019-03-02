@@ -63,10 +63,6 @@
     cursor: default;
 }
 
-#illumina:hover{
-    background-color: rgba(255,255,255,0.45);
-}
-
 #illumina-clicked{
     background-color: rgba(255,255,255,0.45);
 }
@@ -165,7 +161,7 @@
     font-weight: bold;
 }
 .project-name-clicked h2{
-    color: #333333;
+    color: white;
     font-weight: bolder;
 }
 

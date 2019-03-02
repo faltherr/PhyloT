@@ -9,7 +9,7 @@ import{ Badge } from 'react-bootstrap'
 import Checkbox from '../utilities/Checkbox'
 
 //Reducer action creators
-import { setSearchValues, setSelectedGenome, addToCollection } from '../../reducers/mainReducer'
+import { setSearchValues, setSelectedGenome, addToCollection, toggleSpikeIn } from '../../reducers/mainReducer'
 
 //Stlyes
 import '../../styles/searchGenomes.css'
@@ -31,16 +31,11 @@ let SearchGenomes = props => {
 
     //This will check the sample array and the collection array for the same value and only add the value if it is not present
     let handleAddToCollection = (genome, arr) => {
-        console.log('Add to collection?')
         let found = false;
-        console.log('length of collection', props.collection.length)
         for(let i = 0; i < arr.length; i++){
-            console.log(arr[i].organism_name)
             if(arr[i].comboID === genome.comboID )
             found = true
         }
-        console.log('FOUND!', found)
-        console.log(genome.comboID)
         if(!found){
             props.addToCollection(genome)
             toast.success(`Added ${genome.organism_name} to collection. Close the window to review.`)
@@ -49,7 +44,6 @@ let SearchGenomes = props => {
             toast.error(`${genome.organism_name} already in collection!`)
         }
     }
-    console.log('The collection', props.collection)
     return(
         <div className='taxonomy-search-modal'>
             <h2> Search For Genomes </h2>
@@ -73,7 +67,7 @@ let SearchGenomes = props => {
                                             <small> &nbsp; ASM(UID): {element.gbrs_paired_asm}  </small>
                                         </div>
                                     </div>
-                                    <Checkbox style={{alignSelf:'center', justifySelf:'center'}}/>
+                                    <Checkbox style={{alignSelf:'center', justifySelf:'center'}} onChange={()=>props.toggleSpikeIn(element.comboID)}/>
                                 </div>
                                 )
                             })}
@@ -114,4 +108,5 @@ export default connect(
     mapStateToProps, 
         {setSearchValues, 
         setSelectedGenome,
-        addToCollection})(SearchGenomes)
+        addToCollection,
+        toggleSpikeIn})(SearchGenomes)

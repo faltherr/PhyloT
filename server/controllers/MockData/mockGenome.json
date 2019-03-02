@@ -223,7 +223,7 @@
       "classNumGenome": 8858,
       "phylumNumGenome": 8197,
       "superkingdomNumGenome": 8149,
-      "spikeIn": null,
+      "spikeIn": false,
       "comboID": "Wuhan Insect virus 7:1608112:GCA_001754885.1"
     }
   ],

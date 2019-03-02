@@ -20,6 +20,7 @@ const UPDATE_COLLECTION_GENOME_NUMBER = "UPDATE_COLLECTION_GENOME_NUMBER";
 const REMOVE_FROM_COLLECTION = "REMOVE_FROM_COLLECTION";
 const UPDATE_SAMPLE = "UPDATE_SAMPLE";
 const REMOVE_FROM_SAMPLE = "REMOVE_FROM_SAMPLE";
+const TOGGLE_SPIKE_IN = "TOGGLE_SPIKE_IN"
 
 
 // API Requests
@@ -123,6 +124,23 @@ export default function mainReducer(state = initialState, action) {
         ...state,
         selectedGenome: action.payload,
       };
+    case TOGGLE_SPIKE_IN:
+    // if selectedGenome.length()>0 then change the spike in value in the selected genome
+    // Otherwise if the 
+      // console.log(state.selectedGenome)
+      return{
+        ...state,
+        selectedGenome: Object.assign({}, state.selectedGenome, {spikeIn:!state.selectedGenome.spikeIn}),
+        filteredGenomes: state.filteredGenomes.map(genome => {
+          if (genome.comboID !== action.payload){
+            return genome
+          }
+          return {
+            ...genome,
+            spikeIn: !genome.spikeIn
+          }
+        })
+      }
     case ADD_TO_COLLECTION:
       return {
         ...state,
@@ -361,4 +379,12 @@ export function getGenomes() {
     type: GET_GENOMES,
     payload: request
   };
+}
+
+//This action will toggle the state of the spikein for an individual genome
+export function toggleSpikeIn(ID){
+  return{
+    type: TOGGLE_SPIKE_IN,
+    payload: ID
+  }
 }

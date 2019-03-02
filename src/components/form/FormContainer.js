@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 //Local Components
 import PlatformSelector from './PlatformSelector'
-import GenomeSelectorType from '../utilities/FunctionalComponentTemplate'
 
 //Styles
 import '../../styles/mainwizard.css'
@@ -19,44 +18,10 @@ class FormContainer extends Component{
         }
     }
 
-    nextStep= () => {
-        let currentStep = this.state.currentStep;
-        if (currentStep >= 2) {
-          currentStep = 3;
-        } else {
-          currentStep = currentStep + 1;
-        }
-        this.setState({
-            currentStep:currentStep
-        })
-    }
-    
-    prevStep= () => {
-        let currentStep = this.state.currentStep;
-        if (currentStep <= 1) {
-          currentStep = 1;
-        } else {
-          currentStep = currentStep - 1;
-        }
-        this.setState({
-            currentStep:currentStep
-        })
-    }
-
-    displayContent = () => {
-        if (this.state.currentStep === 1){
-            return <PlatformSelector/>
-        } else if (this.state.currentStep === 2) {
-            return <GenomeSelectorType/>
-        }
-    }
-
     displayButton = () =>{
         if(this.props.inputType === 'existingProject' || this.props.inputType === 'biom'){
-            // return <button onClick={this.prevStep}>Review Sample</button>
             return <Link to = '/generate/review'><button type='button' className='btn btn-success'>Review Sample</button></Link>
         } else if (this.props.inputType === 'newProject'){
-            // return <button onClick={this.nextStep}>Select Genomes for Sample</button>
             return <Link to='/generate/customize'> <button type='button' className='btn btn-success'>Select Genomes for Sample</button> </Link>
         } else{
             return null
@@ -67,17 +32,14 @@ class FormContainer extends Component{
         return(
             <div className='wizard-main-container'>
             <section className='top-text'>
-                <h1>seqSim Genome Selector</h1>
+                <h1>Genome Selector</h1>
                 <p>Use seqSim to customize a synthetic genome community or upload a file of your own.</p>
             </section>
             <div className='main-content'>
                 <div className='wizard'>
-                    {/* <div className='breadcrumb-container'>
-                    Progress Tracker here
-                    </div> */}
                     <div className='content-container'>
                         
-                        {this.displayContent()}
+                        <PlatformSelector/>
                     </div>
                     <div className='button-container'>
                         {this.displayButton()}

@@ -24,6 +24,7 @@
     display:flex;
     justify-content: space-around;
     margin-bottom: 25px;
+    align-items: center;
 }
 
 .file-uploader-container{
@@ -32,16 +33,16 @@
     align-items: center;
     height: auto;
     width: 35%;
-    border: 1px solid black;
-    border-radius: 5px;
+    padding-bottom: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .select-file-contianer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 266px;
     height: auto;
     width: 35%;
-    border: 1px solid black;
-    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
