@@ -5,7 +5,7 @@
 
 SeqSim, also known as PhyloT, is a program for generating synthetic genomic data from known genomes. Many analysis platforms suffer from high dimensionality challenges that limit performance. Introducing small amounts of noise in samples helps to preserve a sample's defining characteristics. Synthetic data increases the size of data sets and can help in performance and generalization.
 
-The client interface allows users to create fully customizable data from over 10,000 available genomes and review the sample with data visualizations  prior to analysis. Following analysis the generated data can be viewed in the GUI and exported for use in the users informatics algorithms.
+The client interface allows users to create fully customizable data from over 150,000 available genomes and review the sample with data visualizations  prior to analysis. Following analysis the generated data can be viewed in the GUI and exported for use in the users informatics algorithms.
 
 ## Getting Started: Downloading and running the code
 *This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).*
