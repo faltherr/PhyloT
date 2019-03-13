@@ -1,3 +1,5 @@
+## **This repository is deprecated and this project will now be maintained at** https://faltherr@bitbucket.org/mcflynn/seqsim.git
+
 ## ![alt text](https://github.com/faltherr/PhyloT/blob/master/src/images/small_phylotlogo.png "SeqSim Logo") SeqSim
 
 
